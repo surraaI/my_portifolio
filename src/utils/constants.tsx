@@ -34,3 +34,24 @@ export const HERO_CONTENT = {
   description: "I build scalable web applications and solve complex challenges with clean, efficient code.",
   cta: "Explore my work",
 };
+
+export const EXPERTISE = [
+  {
+    title: "Backend Development",
+    description: "Building scalable APIs and server-side systems with Node.js, Python, and modern frameworks."
+  },
+  {
+    title: "Frontend Engineering",
+    description: "Creating responsive and interactive UIs with React, Next.js, and modern CSS frameworks."
+  },
+  {
+    title: "Competitive Programming",
+    description: "Solving complex algorithmic challenges with efficient data structures and optimized solutions."
+  }
+];
+
+export const STATS = [
+  { value: "800+", label: "LeetCode Problems" },
+  { value: "50+", label: "Projects Built" },
+  { value: "2", label: "Years Experience" },
+];
