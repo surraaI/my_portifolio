@@ -1,13 +1,23 @@
-"use client";
+// components/Header.tsx
+'use client';
 
 import { motion } from "framer-motion";
 import DarkModeToggle from "./DarkModeToggle";
 import { useTheme } from "@/context/ThemeContext";
-import Link from "next/link";
+import { useEffect, useRef } from 'react';
 
 const Header = () => {
   const { theme } = useTheme();
   const bgColor = theme === "dark" ? "rgba(17, 24, 39, 0.8)" : "rgba(249, 250, 251, 0.8)";
+  
+  const handleScrollTo = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 96; // Adjust based on header height
+      const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
 
   return (
     <motion.header
@@ -18,21 +28,24 @@ const Header = () => {
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+        <div 
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 cursor-pointer"
+        >
           Sura Itana
-        </Link>
+        </div>
         
         <nav className="hidden md:flex space-x-8">
-          {["About", "Projects", "Contact"].map((item, i) => (
+          {["about", "projects", "contact"].map((item, i) => (
             <motion.div
               key={item}
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
             >
-              <Link
-                href={`/${item.toLowerCase()}`}
-                className="text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-medium relative group"
+              <button
+                onClick={() => handleScrollTo(item)}
+                className="capitalize text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-medium relative group"
               >
                 {item}
                 <motion.span 
@@ -40,7 +53,7 @@ const Header = () => {
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                 />
-              </Link>
+              </button>
             </motion.div>
           ))}
         </nav>
