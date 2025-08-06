@@ -1,5 +1,3 @@
-import { Icons } from "@/utils/icons";
-
 export type Project = {
   id: string;
   title: string;
@@ -11,6 +9,11 @@ export type Project = {
   demoUrl?: string;
   imageUrl: string;
   features: string[];
+};
+
+export type Category = {
+  id: string;
+  name: string;
 };
 
 export const projects: Project[] = [

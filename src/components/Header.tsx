@@ -4,7 +4,6 @@
 import { motion } from "framer-motion";
 import DarkModeToggle from "./DarkModeToggle";
 import { useTheme } from "@/context/ThemeContext";
-import { useEffect, useRef } from 'react';
 
 const Header = () => {
   const { theme } = useTheme();

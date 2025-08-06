@@ -3,7 +3,6 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import TimelineItem from '@/components/TimelineItem';
 import EducationCard from '@/components/EducationCard';
 import { Icons } from '@/utils/icons';
 import SkillCard from '@/components/SkillCard';

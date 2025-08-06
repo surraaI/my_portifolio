@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '@/components/ProjectCard';
 import ProjectFilter from '@/components/ProjectFilter'
-import { projects, categories, Category } from '@/data/projects';
+import { projects, categories } from '@/data/projects';
 
 export default function ProjectsSection() {
   const [activeCategory, setActiveCategory] = useState('all');
