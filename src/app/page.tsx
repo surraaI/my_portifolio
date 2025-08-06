@@ -16,11 +16,12 @@ import FloatingCTA from "@/components/FloatingCTA";
 
 export default function Home() {
   return (
-    <main>
+    <div className="w-full">
       {/* Hero Section - Full Screen */}
       <section 
         id="hero" 
-        className="min-h-screen flex items-center justify-center scroll-mt-24 overflow-hidden relative"
+        className="h-screen w-full flex items-center justify-center relative overflow-hidden"
+        style={{ minHeight: '100vh' }}
       >
         {/* Background Gradient */}
         <motion.div 
@@ -56,7 +57,7 @@ export default function Home() {
           />
         ))}
         
-        <div className="max-w-6xl mx-auto px-4 z-10">
+        <div className="max-w-6xl mx-auto px-4 z-10 w-full">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
             {/* Text Content */}
             <motion.div
@@ -235,98 +236,100 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Stats Section */}
-      <motion.div 
-        className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-6xl mx-auto px-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.8 }}
-      >
-        {STATS.map((stat, index) => (
-          <motion.div
-            key={index}
-            className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center relative overflow-hidden"
-            whileHover={{ y: -5 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.8 + index * 0.2 }}
-          >
-            <div className="text-3xl font-bold text-white">{stat.value}</div>
-            <div className="text-gray-300 mt-1">{stat.label}</div>
-            
-            {/* Animated background elements */}
-            <motion.div 
-              className="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-blue-500 opacity-10 blur-xl"
-              animate={{ 
-                x: [0, 20, 0],
-                y: [0, 20, 0],
-              }}
-              transition={{ 
-                duration: 5 + index * 2, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-            <motion.div 
-              className="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-purple-500 opacity-10 blur-xl"
-              animate={{ 
-                x: [0, -20, 0],
-                y: [0, -20, 0],
-              }}
-              transition={{ 
-                duration: 6 + index * 2, 
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Expertise Section */}
-      <motion.div
-        className="mt-24 max-w-6xl mx-auto px-4"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2.2 }}
-      >
-        <motion.h2 
-          className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2.4 }}
+      {/* Rest of the content */}
+      <div className="max-w-6xl mx-auto px-4">
+        {/* Stats Section */}
+        <motion.div 
+          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.8 }}
         >
-          Areas of Expertise
-        </motion.h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {EXPERTISE.map((item, index) => (
-            <InteractiveCard
+          {STATS.map((stat, index) => (
+            <motion.div
               key={index}
-              title={item.title}
-              description={item.description}
-              index={index}
-              className="hover:shadow-2xl"
-            />
+              className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center relative overflow-hidden"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.8 + index * 0.2 }}
+            >
+              <div className="text-3xl font-bold text-white">{stat.value}</div>
+              <div className="text-gray-300 mt-1">{stat.label}</div>
+              
+              {/* Animated background elements */}
+              <motion.div 
+                className="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-blue-500 opacity-10 blur-xl"
+                animate={{ 
+                  x: [0, 20, 0],
+                  y: [0, 20, 0],
+                }}
+                transition={{ 
+                  duration: 5 + index * 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+              <motion.div 
+                className="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-purple-500 opacity-10 blur-xl"
+                animate={{ 
+                  x: [0, -20, 0],
+                  y: [0, -20, 0],
+                }}
+                transition={{ 
+                  duration: 6 + index * 2, 
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            </motion.div>
           ))}
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* 3D Floating Call to Action */}
-      <motion.div 
-        className="max-w-6xl mx-auto px-4"
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2.8, duration: 0.5 }}
-      >
-        <FloatingCTA />
-      </motion.div>
+        {/* Expertise Section */}
+        <motion.div
+          className="mt-24"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2.2 }}
+        >
+          <motion.h2 
+            className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.4 }}
+          >
+            Areas of Expertise
+          </motion.h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {EXPERTISE.map((item, index) => (
+              <InteractiveCard
+                key={index}
+                title={item.title}
+                description={item.description}
+                index={index}
+                className="hover:shadow-2xl"
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* 3D Floating Call to Action */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 2.8, duration: 0.5 }}
+        >
+          <FloatingCTA />
+        </motion.div>
+      </div>
 
       {/* Projects Section */}
       <ProjectsSection />
       
       {/* About Section */}
       <AboutSection />
-    </main>
+    </div>
   );
 }
