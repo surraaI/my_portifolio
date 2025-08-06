@@ -20,7 +20,7 @@ export default function Home() {
       {/* Hero Section - Full Screen */}
       <section 
         id="hero" 
-        className="h-screen w-full flex items-center justify-center relative overflow-hidden"
+        className="h-screen w-full flex items-center justify-center relative overflow-hidden py-16 md:py-0"
         style={{ minHeight: '100vh' }}
       >
         {/* Background Gradient */}
@@ -58,7 +58,7 @@ export default function Home() {
         ))}
         
         <div className="max-w-6xl mx-auto px-4 z-10 w-full">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
             {/* Text Content */}
             <motion.div
               className="text-center md:text-left"
@@ -67,7 +67,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <motion.h1 
-                className="text-5xl md:text-7xl font-extrabold tracking-tight mb-4"
+                className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
@@ -78,7 +78,7 @@ export default function Home() {
               </motion.h1>
               
               <motion.h2
-                className="text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-8"
+                className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6 md:mb-8"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
@@ -87,7 +87,7 @@ export default function Home() {
               </motion.h2>
               
               <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-6"
+                className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6 mb-8 md:mb-0"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.0 }}
@@ -101,14 +101,14 @@ export default function Home() {
                       window.scrollTo({ top: y, behavior: 'smooth' });
                     }
                   }}
-                  className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
+                  className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
                   whileHover={{ 
                     scale: 1.05,
                     background: "linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899)"
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <span className="relative z-10">{HERO_CONTENT.cta}</span>
+                  <span className="relative z-10 text-sm sm:text-base">{HERO_CONTENT.cta}</span>
                   <motion.span 
                     className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity"
                     initial={{ x: "-100%" }}
@@ -122,7 +122,7 @@ export default function Home() {
                 </motion.button>
                 
                 <motion.div 
-                  className="flex items-center gap-5"
+                  className="flex items-center gap-3 sm:gap-4 md:gap-5"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 1.2 }}
@@ -133,7 +133,7 @@ export default function Home() {
                       href={link.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all relative group"
+                      className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all relative group"
                       whileHover={{ 
                         y: -5,
                         scale: 1.1,
@@ -145,7 +145,7 @@ export default function Home() {
                       transition={{ delay: 1.2 + index * 0.1 }}
                     >
                       <span className="sr-only">{link.name}</span>
-                      <span className="text-gray-800 dark:text-gray-200 group-hover:text-white transition-colors">
+                      <span className="text-gray-800 dark:text-gray-200 group-hover:text-white transition-colors text-lg sm:text-xl">
                         {link.icon}
                       </span>
                     </motion.a>
@@ -154,9 +154,9 @@ export default function Home() {
               </motion.div>
             </motion.div>
             
-            {/* Profile Image */}
+            {/* Profile Image - Responsive Sizing */}
             <motion.div
-              className="relative"
+              className="relative mb-8 md:mb-0"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ 
@@ -173,7 +173,7 @@ export default function Home() {
             >
               <div className="relative">
                 <motion.div
-                  className="relative rounded-full w-64 h-64 md:w-80 md:h-80 overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl"
+                  className="relative rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.3 }}
                 >
@@ -188,12 +188,12 @@ export default function Home() {
                   />
                 </motion.div>
                 
-                {/* Floating Badge */}
+                {/* Floating Badge - Responsive Sizing */}
                 <motion.div
-                  className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 rounded-full p-3 shadow-xl"
+                  className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-white dark:bg-gray-800 rounded-full p-2 sm:p-3 shadow-lg"
                   animate={{ 
                     rotate: [0, 360],
-                    y: [0, -10, 0]
+                    y: [0, -8, 0]
                   }}
                   transition={{ 
                     repeat: Infinity, 
@@ -206,7 +206,7 @@ export default function Home() {
                     }
                   }}
                 >
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full w-14 h-14 flex items-center justify-center text-xl font-bold">
+                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-lg sm:text-xl font-bold">
                     SI
                   </div>
                 </motion.div>
@@ -215,9 +215,9 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Positioned Higher on Mobile */}
         <motion.div 
-          className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+          className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.8 }}
@@ -225,11 +225,11 @@ export default function Home() {
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-8 h-14 rounded-full border-2 border-gray-400 dark:border-gray-600 flex justify-center p-1"
+            className="w-6 h-10 sm:w-8 sm:h-14 rounded-full border-2 border-gray-400 dark:border-gray-600 flex justify-center p-1"
           >
             <motion.div 
               className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full"
-              animate={{ y: [0, 10] }}
+              animate={{ y: [0, 6] }}
               transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
             />
           </motion.div>
