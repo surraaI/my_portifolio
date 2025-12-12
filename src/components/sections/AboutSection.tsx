@@ -32,7 +32,7 @@ export default function AboutSection() {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                Full-Stack Developer, Problem Solver, and Passionate Pianist
+                Backend & Full-Stack Developer | A2SV Graduate | 900+ LeetCode Problems
               </motion.p>
             </motion.div>
       
@@ -72,7 +72,7 @@ export default function AboutSection() {
                       </div>
                       <div className="flex items-center text-gray-300">
                         <Icons.leetcode />
-                        <span>LeetCode: 800+ Problems Solved</span>
+                        <span>LeetCode: 900+ Problems Solved</span>
                       </div>
                       <div className="flex items-center text-gray-300">
                         <Icons.piano />
@@ -103,27 +103,38 @@ export default function AboutSection() {
                 <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-xl mb-8">
                   <h2 className="text-2xl font-bold text-white mb-4">Biography</h2>
                   <p className="text-gray-300 mb-4">
-                    I&apos;m a Software Engineering student at Addis Ababa University (ranked 10th in Africa) 
-                    with a passion for solving complex problems through code. As a graduate of the Google-backed 
-                    Africa to Silicon Valley (A2SV) program, I&apos;ve developed a strong foundation in data structures 
-                    and algorithms, solving over 800 problems on competitive coding platforms.
+                    I&apos;m a backend and full-stack developer with hands-on experience building scalable, real-world applications using Node.js, FastAPI, NestJS, and Flutter, along with PostgreSQL, MongoDB, and MySQL.
+                  </p>
+                  <p className="text-gray-300 mb-4">
+                    I recently contributed to impactful platforms like TransitTrack, a real-time bus tracking and digital payment system developed during the 2024 A2SV Hackathon (AI for Impact), where I built key backend components using FastAPI and integrated them with a Flutter frontend.
+                  </p>
+                  <p className="text-gray-300 mb-4">
+                    I&apos;m also a graduate of the A2SV (Africa to Silicon Valley) program, a Google-backed initiative, where I sharpened my algorithmic thinking through 900+ problems on LeetCode and Codeforces. This experience strengthened my ability to write clean, efficient code and work in high-performing teams.
+                  </p>
+                  <p className="text-gray-300 mb-4">
+                    With a solid foundation in Python, TypeScript, and Dart, I&apos;ve developed production-ready systems such as Ensight (news & market intelligence platform) and SVM Booster (YouTube growth engine).
                   </p>
                   <p className="text-gray-300">
-                    My experience spans backend development, full-stack applications, and mobile development. 
-                    I thrive on building scalable systems that solve real-world problems, particularly those 
-                    relevant to African communities. When I&apos;m not coding, you&apos;ll find me composing music on 
-                    the piano or mentoring junior developers.
+                    I&apos;m now focused on collaborating with mission-driven teams to build innovative, high-quality applications.
                   </p>
+                  <div className="mt-6 pt-6 border-t border-gray-700">
+                    <p className="text-gray-400 text-sm mb-2">
+                      <span className="font-semibold text-purple-400">🔧 Tech Stack:</span> Node.js, FastAPI, NestJS, Flutter, TypeScript, PostgreSQL, MongoDB
+                    </p>
+                    <p className="text-gray-400 text-sm">
+                      <span className="font-semibold text-purple-400">🌍 Open to:</span> Remote Backend or Fullstack Developer roles
+                    </p>
+                  </div>
                 </div>
       
                 {/* Education Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                   <EducationCard 
-                    title="BSc in Software Engineering"
-                    institution="Addis Ababa University"
-                    period="2022 - Present"
-                    description="Ranked 10th in Africa. Relevant coursework includes Data Structures & Algorithms, Web & Mobile Application Development, Introduction to AI, and Machine Learning."
-                    icon={<Icons.university />}
+                    title="A2SV Program"
+                    institution="Africa to Silicon Valley"
+                    period="Graduate"
+                    description="Google-backed initiative focused on algorithmic thinking and problem-solving. Strengthened ability to write clean, efficient code and work in high-performing teams through 900+ LeetCode and Codeforces problems."
+                    icon={<Icons.trophy />}
                   />
                   
                   <EducationCard 
@@ -131,7 +142,7 @@ export default function AboutSection() {
                     institution="The Odin Project"
                     period="Aug 2023 - Oct 2024"
                     description="Studied HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB through hands-on full-stack projects. Built responsive web apps from scratch."
-                    icon={<Icons.trophy />}
+                    icon={<Icons.university />}
                   />
                 </div>
               </motion.div>
@@ -219,10 +230,10 @@ export default function AboutSection() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white">800+ Problems Solved</h3>
+                    <h3 className="text-xl font-bold text-white">900+ Problems Solved</h3>
                   </div>
                   <p className="text-gray-300">
-                    Demonstrated advanced problem-solving skills by solving over 800 challenges on LeetCode 
+                    Demonstrated advanced problem-solving skills by solving over 900 challenges on LeetCode 
                     and Codeforces, showcasing algorithmic proficiency and dedication to continuous learning.
                   </p>
                 </div>

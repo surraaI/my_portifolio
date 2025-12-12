@@ -48,14 +48,21 @@ const FloatingCTA = () => {
         Lets collaborate on your next project. I bring technical expertise and creative problem-solving to every challenge.
       </motion.p>
       
-      <motion.a
-        href="/contact"
-        className="inline-block px-8 py-3 bg-white text-blue-600 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-colors"
+      <motion.button
+        onClick={() => {
+          const contactSection = document.getElementById('contact');
+          if (contactSection) {
+            const offset = 96;
+            const y = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+        }}
+        className="inline-block px-8 py-3 bg-white text-blue-600 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-colors cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
         Get in Touch
-      </motion.a>
+      </motion.button>
       
       {/* Floating particles - render only on client */}
       {particles && particles.map((particle) => (
