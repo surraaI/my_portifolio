@@ -24,7 +24,7 @@ export const projects: Project[] = [
     longDescription: "Developed a comprehensive backend system for YouTube growth with email/password authentication (JWT + bcrypt), campaign creation, OCR-based subscription verification, referral tracking, and coin reward logic.",
     category: "backend",
     technologies: ["Node.js", "Express", "MongoDB", "React", "Socket.IO"],
-    githubUrl: "https://github.com/suraitana/svm-booster",
+    githubUrl: "https://github.com/surraaI/svm-booster",
     demoUrl: "https://svm-booster.example.com",
     imageUrl: "/images/projects/svm-booster.jpg",
     features: [
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     longDescription: "Built a scalable RESTful backend for a news website using FastAPI and PostgreSQL, supporting article categorization and user authentication. Implemented secure admin and user functionalities with role-based access control.",
     category: "backend",
     technologies: ["Python", "FastAPI", "PostgreSQL", "Docker"],
-    githubUrl: "https://github.com/suraitana/ensight-news",
+    githubUrl: "https://github.com/surraaI/ensight-news",
     imageUrl: "/images/projects/ensight-news.jpg",
     features: [
       "Article categorization system",
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     longDescription: "Built a Flutter eCommerce app using BLoC, Clean Architecture, and TDD for maintainability and reliability. Integrated real-time messaging via Socket.io and secured the app with user authentication.",
     category: "mobile",
     technologies: ["Flutter", "Dart", "BLoC", "Socket.IO", "Node.js"],
-    githubUrl: "https://github.com/suraitana/ecommerce-app",
+    githubUrl: "https://github.com/surraaI/ecommerce-app",
     imageUrl: "/images/projects/ecommerce-app.jpg",
     features: [
       "Clean Architecture implementation",
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     longDescription: "Semifinalist in Africa-wide A2SV Hackathon; developed TransitTrack for real-time bus tracking and payment services. Built with FastAPI (backend) and Flutter (frontend) for seamless full-stack functionality.",
     category: "fullstack",
     technologies: ["FastAPI", "Flutter", "PostgreSQL", "Google Maps API"],
-    githubUrl: "https://github.com/suraitana/transittrack",
+    githubUrl: "https://github.com/surraaI/transittrack",
     demoUrl: "https://transittrack.example.com",
     imageUrl: "/images/projects/transittrack.jpg",
     features: [
@@ -111,7 +111,7 @@ export const projects: Project[] = [
     longDescription: "Built and led a team for a full-stack health tracker app using NestJS, MongoDB, and JWT auth. Developed both frontend (HTML/CSS/JS) and backend, ensuring seamless integration via TypeScript.",
     category: "fullstack",
     technologies: ["NestJS", "TypeScript", "MongoDB", "JWT"],
-    githubUrl: "https://github.com/suraitana/health-tracker",
+    githubUrl: "https://github.com/surraaI/health-tracker",
     imageUrl: "/images/projects/health-tracker.jpg",
     features: [
       "Health data tracking",
