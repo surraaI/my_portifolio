@@ -11,8 +11,10 @@ import {
 import Image from "next/image";
 import AboutSection from "@/components/sections/AboutSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import ContactSection from "@/components/sections/ContactSection";
 import InteractiveCard from "@/components/InteractiveCard";
 import FloatingCTA from "@/components/FloatingCTA";
+import FloatingParticles from "@/components/FloatingParticles";
 
 export default function Home() {
   return (
@@ -33,29 +35,8 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-900/10 dark:to-purple-900/10"></div>
         </motion.div>
         
-        {/* Floating Particles */}
-        {[...Array(15)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full bg-blue-500/20 dark:bg-blue-400/10"
-            style={{
-              width: Math.floor(Math.random() * 40) + 10,
-              height: Math.floor(Math.random() * 40) + 10,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -30, 0],
-              x: [0, Math.random() > 0.5 ? 20 : -20, 0],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 2
-            }}
-          />
-        ))}
+        {/* Floating Particles - Client-side only to avoid hydration errors */}
+        <FloatingParticles />
         
         <div className="max-w-6xl mx-auto px-4 z-10 w-full">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
@@ -330,6 +311,9 @@ export default function Home() {
       
       {/* About Section */}
       <AboutSection />
+
+      {/* Contact Section */}
+      <ContactSection />
     </div>
   );
 }

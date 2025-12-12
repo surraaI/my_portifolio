@@ -2,7 +2,6 @@
 'use client';
 
 import { motion } from "framer-motion";
-import DarkModeToggle from "./DarkModeToggle";
 import { useTheme } from "@/context/ThemeContext";
 
 const Header = () => {
@@ -26,10 +25,10 @@ const Header = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center">
+      <div className="container mx-auto px-4 flex justify-center items-center relative">
         <div 
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 cursor-pointer"
+          className="absolute left-4 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 cursor-pointer"
         >
           Sura Itana
         </div>
@@ -56,8 +55,6 @@ const Header = () => {
             </motion.div>
           ))}
         </nav>
-        
-        <DarkModeToggle />
       </div>
     </motion.header>
   );
