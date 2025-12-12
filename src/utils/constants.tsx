@@ -52,6 +52,6 @@ export const EXPERTISE = [
 
 export const STATS = [
   { value: "900+", label: "LeetCode Problems" },
-  { value: "50+", label: "Projects Built" },
+  { value: "10+", label: "Projects Built" },
   { value: "2", label: "Years Experience" },
 ];

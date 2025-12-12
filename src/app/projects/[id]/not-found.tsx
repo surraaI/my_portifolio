@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -14,7 +16,7 @@ export default function NotFound() {
           Project Not Found
         </h2>
         <p className="text-gray-600 dark:text-gray-400 mb-8">
-          The project you're looking for doesn't exist or has been removed.
+          The project you&apos;re looking for doesn&apos;t exist or has been removed.
         </p>
         <Link
           href="/#projects"
