@@ -14,7 +14,8 @@ import ProjectsSection from "@/components/sections/ProjectsSection";
 import ContactSection from "@/components/sections/ContactSection";
 import InteractiveCard from "@/components/InteractiveCard";
 import FloatingCTA from "@/components/FloatingCTA";
-import FloatingParticles from "@/components/FloatingParticles";
+import Reveal from "@/components/Reveal";
+import Hero3D from "@/components/three/Hero3D";
 
 export default function Home() {
   return (
@@ -35,8 +36,8 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-900/10 dark:to-purple-900/10"></div>
         </motion.div>
         
-        {/* Floating Particles - Client-side only to avoid hydration errors */}
-        <FloatingParticles />
+        {/* 3D hero scene - falls back to lightweight particles on low-power/mobile devices */}
+        <Hero3D />
         
         <div className="max-w-6xl mx-auto px-4 z-10 w-full">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
@@ -47,13 +48,13 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <motion.h1 
-                className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4"
+              <motion.h1
+                className="text-4xl sm:text-5xl md:text-7xl font-bold font-display tracking-tight mb-4"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
               >
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+                <span className="text-brand-gradient">
                   {HERO_CONTENT.title}
                 </span>
               </motion.h1>
@@ -82,7 +83,7 @@ export default function Home() {
                       window.scrollTo({ top: y, behavior: 'smooth' });
                     }
                   }}
-                  className="px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
+                  className="px-6 py-3 sm:px-8 sm:py-4 bg-brand-gradient text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
                   whileHover={{ 
                     scale: 1.05,
                     background: "linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899)"
@@ -159,11 +160,11 @@ export default function Home() {
                   transition={{ duration: 0.3 }}
                 >
                   <Image
-                    src="/images/profile.jpg" 
+                    src="/images/profile.jpg"
                     alt="Sura Itana"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-full"
+                    fill
+                    sizes="(min-width: 1024px) 288px, (min-width: 768px) 256px, 224px"
+                    className="object-cover rounded-full"
                     quality={100}
                     priority
                   />
@@ -220,69 +221,51 @@ export default function Home() {
       {/* Rest of the content */}
       <div className="max-w-6xl mx-auto px-4">
         {/* Stats Section */}
-        <motion.div 
-          className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8 }}
-        >
+        <Reveal className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
           {STATS.map((stat, index) => (
             <motion.div
               key={index}
-              className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl text-center relative overflow-hidden"
+              className="bg-surface-card border border-gray-200 dark:border-gray-800 p-6 rounded-2xl text-center relative overflow-hidden shadow-xl"
               whileHover={{ y: -5 }}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.8 + index * 0.2 }}
             >
-              <div className="text-3xl font-bold text-white">{stat.value}</div>
-              <div className="text-gray-300 mt-1">{stat.label}</div>
-              
+              <div className="text-3xl font-bold font-display text-gray-900 dark:text-white">{stat.value}</div>
+              <div className="text-gray-600 dark:text-gray-300 mt-1">{stat.label}</div>
+
               {/* Animated background elements */}
-              <motion.div 
+              <motion.div
                 className="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-blue-500 opacity-10 blur-xl"
-                animate={{ 
+                animate={{
                   x: [0, 20, 0],
                   y: [0, 20, 0],
                 }}
-                transition={{ 
-                  duration: 5 + index * 2, 
+                transition={{
+                  duration: 5 + index * 2,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
               />
-              <motion.div 
+              <motion.div
                 className="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-purple-500 opacity-10 blur-xl"
-                animate={{ 
+                animate={{
                   x: [0, -20, 0],
                   y: [0, -20, 0],
                 }}
-                transition={{ 
-                  duration: 6 + index * 2, 
+                transition={{
+                  duration: 6 + index * 2,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
               />
             </motion.div>
           ))}
-        </motion.div>
+        </Reveal>
 
         {/* Expertise Section */}
-        <motion.div
-          className="mt-24"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.2 }}
-        >
-          <motion.h2 
-            className="text-3xl font-bold text-center mb-12 text-gray-900 dark:text-white"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.4 }}
-          >
+        <Reveal className="mt-24">
+          <h2 className="text-3xl font-bold font-display text-center mb-12 text-gray-900 dark:text-white">
             Areas of Expertise
-          </motion.h2>
-          
+          </h2>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {EXPERTISE.map((item, index) => (
               <InteractiveCard
@@ -294,16 +277,12 @@ export default function Home() {
               />
             ))}
           </div>
-        </motion.div>
+        </Reveal>
 
         {/* 3D Floating Call to Action */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.8, duration: 0.5 }}
-        >
+        <Reveal>
           <FloatingCTA />
-        </motion.div>
+        </Reveal>
       </div>
 
       {/* Projects Section */}

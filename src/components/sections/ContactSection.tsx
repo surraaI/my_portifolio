@@ -3,60 +3,42 @@
 
 import { motion } from 'framer-motion';
 import ContactForm from '@/components/ContactForm';
+import Reveal from '@/components/Reveal';
 import { Icons } from '@/utils/icons';
 
 export default function ContactSection() {
   return (
     <section id="contact" className="scroll-mt-24 py-24 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-6xl mx-auto px-4">
-        <motion.div
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
+        <Reveal className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold font-display text-brand-gradient mb-4">
             Get In Touch
-          </motion.h1>
-          <motion.p
-            className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
+          </h1>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Have a project in mind or want to collaborate? I&apos;d love to hear from you!
-          </motion.p>
-        </motion.div>
+          </p>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-xl h-full">
-              <h2 className="text-2xl font-bold text-white mb-6">Contact Information</h2>
-              
+          <Reveal delay={0.1}>
+            <div className="bg-surface-card border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-xl h-full">
+              <h2 className="text-2xl font-bold font-display text-gray-900 dark:text-white mb-6">Contact Information</h2>
+
               <div className="space-y-6">
                 <motion.div
                   className="flex items-start space-x-4"
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="bg-blue-500/20 p-3 rounded-lg">
+                  <div className="bg-blue-500/10 dark:bg-blue-500/20 p-3 rounded-lg">
                     <Icons.email />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold mb-1">Email</h3>
-                    <a 
-                      href="mailto:suraitana@gmail.com" 
-                      className="text-gray-300 hover:text-blue-400 transition-colors"
+                    <h3 className="text-gray-900 dark:text-white font-semibold mb-1">Email</h3>
+                    <a
+                      href="mailto:suraitana@gmail.com"
+                      className="text-gray-600 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 transition-colors"
                     >
                       suraitana@gmail.com
                     </a>
@@ -68,25 +50,25 @@ export default function ContactSection() {
                   whileHover={{ x: 5 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <div className="bg-purple-500/20 p-3 rounded-lg">
+                  <div className="bg-purple-500/10 dark:bg-purple-500/20 p-3 rounded-lg">
                     <Icons.location />
                   </div>
                   <div>
-                    <h3 className="text-white font-semibold mb-1">Location</h3>
-                    <p className="text-gray-300">Addis Ababa, Ethiopia</p>
+                    <h3 className="text-gray-900 dark:text-white font-semibold mb-1">Location</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Addis Ababa, Ethiopia</p>
                   </div>
                 </motion.div>
 
               </div>
 
-              <div className="mt-8 pt-8 border-t border-gray-700">
-                <p className="text-gray-400 mb-4">Connect with me on:</p>
+              <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                <p className="text-gray-500 dark:text-gray-400 mb-4">Connect with me on:</p>
                 <div className="flex flex-wrap gap-4">
                   <motion.a
                     href="https://github.com/surraaI"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg transition-colors text-white flex items-center gap-2"
+                    className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 p-3 rounded-lg transition-colors text-gray-800 dark:text-white flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     title="GitHub"
@@ -100,7 +82,7 @@ export default function ContactSection() {
                     href="https://www.linkedin.com/in/surraa-i/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg transition-colors text-white flex items-center gap-2"
+                    className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 p-3 rounded-lg transition-colors text-gray-800 dark:text-white flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     title="LinkedIn"
@@ -114,7 +96,7 @@ export default function ContactSection() {
                     href="https://t.me/surraa777"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-700 hover:bg-gray-600 p-3 rounded-lg transition-colors text-white flex items-center gap-2"
+                    className="bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 p-3 rounded-lg transition-colors text-gray-800 dark:text-white flex items-center gap-2"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     title="Telegram"
@@ -127,22 +109,17 @@ export default function ContactSection() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Reveal>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.9 }}
-          >
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-xl">
-              <h2 className="text-2xl font-bold text-white mb-6">Send a Message</h2>
+          <Reveal delay={0.2}>
+            <div className="bg-surface-card border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-xl">
+              <h2 className="text-2xl font-bold font-display text-gray-900 dark:text-white mb-6">Send a Message</h2>
               <ContactForm />
             </div>
-          </motion.div>
+          </Reveal>
         </div>
       </div>
     </section>
   );
 }
-

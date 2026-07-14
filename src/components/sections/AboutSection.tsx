@@ -1,143 +1,118 @@
 // components/sections/AboutSection.tsx
 'use client';
 
-import { motion } from 'framer-motion';
 import Image from 'next/image';
 import EducationCard from '@/components/EducationCard';
 import { Icons } from '@/utils/icons';
 import SkillCard from '@/components/SkillCard';
+import Reveal from '@/components/Reveal';
 
 export default function AboutSection() {
   return (
     <section id="about" className="scroll-mt-24 py-24">
           <div className="max-w-6xl mx-auto px-4 py-16">
             {/* Hero Section */}
-            <motion.div
-              className="text-center mb-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <motion.h1 
-                className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 mb-4"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-              >
+            <Reveal className="text-center mb-16">
+              <h1 className="text-4xl md:text-5xl font-bold font-display text-brand-gradient mb-4">
                 About Me
-              </motion.h1>
-              <motion.p
-                className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
+              </h1>
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
                 Backend & Full-Stack Developer | A2SV Graduate | 900+ LeetCode Problems
-              </motion.p>
-            </motion.div>
-      
+              </p>
+            </Reveal>
+
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
               {/* Profile Section */}
-              <motion.div
-                className="lg:col-span-1"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-xl">
+              <Reveal className="lg:col-span-1" delay={0.1}>
+                <div className="bg-surface-card border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-xl">
                   <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden border-4 border-purple-500/30">
                     <Image
                       src="/images/profile.jpg"
                       alt="Sura Itana"
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-full"
+                      fill
+                      sizes="192px"
+                      className="object-cover rounded-full"
                       quality={100}
                     />
                   </div>
-                  
-                  <h2 className="text-2xl font-bold text-center text-white mb-2">Sura Itana</h2>
-                  <p className="text-gray-400 text-center mb-6">Software Engineer & Problem Solver</p>
-                  
-                  <div className="bg-gray-700/50 rounded-xl p-4 mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">Personal Info</h3>
+
+                  <h2 className="text-2xl font-bold font-display text-center text-gray-900 dark:text-white mb-2">Sura Itana</h2>
+                  <p className="text-gray-500 dark:text-gray-400 text-center mb-6">Software Engineer & Problem Solver</p>
+
+                  <div className="bg-gray-100 dark:bg-gray-700/50 rounded-xl p-4 mb-6">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Personal Info</h3>
                     <div className="space-y-2">
-                      <div className="flex items-center text-gray-300">
+                      <div className="flex items-center text-gray-600 dark:text-gray-300">
                         <Icons.location />
                         <span>Addis Ababa, Ethiopia</span>
                       </div>
-                      <div className="flex items-center text-gray-300">
+                      <div className="flex items-center text-gray-600 dark:text-gray-300">
                         <Icons.email />
                         <span>suraitana@gmail.com</span>
                       </div>
-                      <div className="flex items-center text-gray-300">
+                      <div className="flex items-center text-gray-600 dark:text-gray-300">
                         <Icons.leetcode />
                         <span>LeetCode: 900+ Problems Solved</span>
                       </div>
-                      <div className="flex items-center text-gray-300">
+                      <div className="flex items-center text-gray-600 dark:text-gray-300">
                         <Icons.piano />
                         <span>Passionate Pianist & Composer</span>
                       </div>
                     </div>
                   </div>
-                  
-                  <h3 className="text-lg font-semibold text-white mb-3">Languages</h3>
+
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Languages</h3>
                   <div className="flex flex-wrap gap-2">
                     {['English', 'Amharic', 'Afaan Oromo'].map((lang) => (
-                      <span key={lang} className="px-3 py-1 bg-purple-500/10 text-purple-400 rounded-full text-sm">
+                      <span key={lang} className="px-3 py-1 bg-purple-500/10 text-purple-600 dark:text-purple-400 rounded-full text-sm">
                         {lang}
                       </span>
                     ))}
                   </div>
                 </div>
-              </motion.div>
-      
+              </Reveal>
+
               {/* Bio and Skills Section */}
-              <motion.div
-                className="lg:col-span-2"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-              >
+              <Reveal className="lg:col-span-2" delay={0.2}>
                 {/* Bio */}
-                <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 shadow-xl mb-8">
-                  <h2 className="text-2xl font-bold text-white mb-4">Biography</h2>
-                  <p className="text-gray-300 mb-4">
+                <div className="bg-surface-card border border-gray-200 dark:border-gray-800 rounded-2xl p-8 shadow-xl mb-8">
+                  <h2 className="text-2xl font-bold font-display text-gray-900 dark:text-white mb-4">Biography</h2>
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
                     I&apos;m a backend and full-stack developer with hands-on experience building scalable, real-world applications using Node.js, FastAPI, NestJS, and Flutter, along with PostgreSQL, MongoDB, and MySQL.
                   </p>
-                  <p className="text-gray-300 mb-4">
-                    I recently contributed to impactful platforms like TransitTrack, a real-time bus tracking and digital payment system developed during the 2024 A2SV Hackathon (AI for Impact), where I built key backend components using FastAPI and integrated them with a Flutter frontend.
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    I recently led the backend for MoveMate, an AI-powered public bus tracking system for Addis Ababa, and contributed to TransitTrack, a real-time bus tracking and digital payment system developed during the 2024 A2SV Hackathon (AI for Impact).
                   </p>
-                  <p className="text-gray-300 mb-4">
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
                     I&apos;m also a graduate of the A2SV (Africa to Silicon Valley) program, a Google-backed initiative, where I sharpened my algorithmic thinking through 900+ problems on LeetCode and Codeforces. This experience strengthened my ability to write clean, efficient code and work in high-performing teams.
                   </p>
-                  <p className="text-gray-300 mb-4">
-                    With a solid foundation in Python, TypeScript, and Dart, I&apos;ve developed production-ready systems such as Ensight (news & market intelligence platform) and SVM Booster (YouTube growth engine).
+                  <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    With a solid foundation in Python, TypeScript, and Dart, I&apos;ve developed production-ready systems such as HealLink (healthcare appointments), YENEB CODS (delivery platform), and SVM Booster (YouTube growth engine).
                   </p>
-                  <p className="text-gray-300">
+                  <p className="text-gray-600 dark:text-gray-300">
                     I&apos;m now focused on collaborating with mission-driven teams to build innovative, high-quality applications.
                   </p>
-                  <div className="mt-6 pt-6 border-t border-gray-700">
-                    <p className="text-gray-400 text-sm mb-2">
-                      <span className="font-semibold text-purple-400">🔧 Tech Stack:</span> Node.js, FastAPI, NestJS, Flutter, TypeScript, PostgreSQL, MongoDB
+                  <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-2">
+                      <span className="font-semibold text-purple-600 dark:text-purple-400">🔧 Tech Stack:</span> Node.js, FastAPI, NestJS, Flutter, TypeScript, PostgreSQL, MongoDB
                     </p>
-                    <p className="text-gray-400 text-sm">
-                      <span className="font-semibold text-purple-400">🌍 Open to:</span> Remote Backend or Fullstack Developer roles
+                    <p className="text-gray-500 dark:text-gray-400 text-sm">
+                      <span className="font-semibold text-purple-600 dark:text-purple-400">🌍 Open to:</span> Remote Backend or Fullstack Developer roles
                     </p>
                   </div>
                 </div>
-      
+
                 {/* Education Section */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <EducationCard 
+                  <EducationCard
                     title="A2SV Program"
                     institution="Africa to Silicon Valley"
                     period="Graduate"
                     description="Google-backed initiative focused on algorithmic thinking and problem-solving. Strengthened ability to write clean, efficient code and work in high-performing teams through 900+ LeetCode and Codeforces problems."
                     icon={<Icons.trophy />}
                   />
-                  
-                  <EducationCard 
+
+                  <EducationCard
                     title="Full Stack Development"
                     institution="The Odin Project"
                     period="Aug 2023 - Oct 2024"
@@ -145,83 +120,73 @@ export default function AboutSection() {
                     icon={<Icons.university />}
                   />
                 </div>
-              </motion.div>
+              </Reveal>
             </div>
-      
+
             {/* Key Skills Section */}
-            <motion.div
-              className="mt-16"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.1 }}
-            >
-              <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            <Reveal className="mt-16" delay={0.1}>
+              <h2 className="text-3xl font-bold font-display text-center mb-12 text-gray-900 dark:text-white">
                 Technical Expertise
               </h2>
-              
+
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <SkillCard 
+                <SkillCard
                   icon={<Icons.python />}
                   name="Python"
                   level="Advanced"
                   description="Backend development with FastAPI and Flask"
                 />
-                
-                <SkillCard 
+
+                <SkillCard
                   icon={<Icons.js />}
                   name="JavaScript"
                   level="Advanced"
                   description="Full-stack development with Node.js and React"
                 />
-                
-                <SkillCard 
+
+                <SkillCard
                   icon={<Icons.nodejs />}
                   name="Node.js"
                   level="Advanced"
                   description="Building scalable backend systems and APIs"
                 />
-                
-                <SkillCard 
+
+                <SkillCard
                   icon={<Icons.react />}
                   name="React"
                   level="Advanced"
                   description="Creating responsive and interactive UIs"
                 />
-                
-                <SkillCard 
+
+                <SkillCard
                   icon={<Icons.flutter />}
                   name="Flutter"
                   level="Intermediate"
                   description="Building cross-platform mobile applications"
                 />
-                
-                <SkillCard 
+
+                <SkillCard
                   icon={<Icons.mongodb />}
                   name="MongoDB"
                   level="Advanced"
                   description="NoSQL database design and management"
                 />
-                
-                <SkillCard 
+
+                <SkillCard
                   icon={<Icons.postgresql />}
                   name="PostgreSQL"
                   level="Intermediate"
                   description="Relational database design and optimization"
                 />
               </div>
-            </motion.div>
-      
+            </Reveal>
+
             {/* Key Achievements */}
-            <motion.div
-              className="mt-24"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4 }}
-            >
-              <h2 className="text-3xl font-bold text-center mb-12 text-white">
+            <Reveal className="mt-24" delay={0.1}>
+              <h2 className="text-3xl font-bold font-display text-center mb-12 text-gray-900 dark:text-white">
                 Key Achievements
               </h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl p-6 border border-purple-500/30">
                   <div className="flex items-center mb-4">
@@ -230,14 +195,14 @@ export default function AboutSection() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white">900+ Problems Solved</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">900+ Problems Solved</h3>
                   </div>
-                  <p className="text-gray-300">
-                    Demonstrated advanced problem-solving skills by solving over 900 challenges on LeetCode 
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Demonstrated advanced problem-solving skills by solving over 900 challenges on LeetCode
                     and Codeforces, showcasing algorithmic proficiency and dedication to continuous learning.
                   </p>
                 </div>
-                
+
                 <div className="bg-gradient-to-br from-purple-500/10 to-blue-500/10 rounded-2xl p-6 border border-purple-500/30">
                   <div className="flex items-center mb-4">
                     <div className="bg-purple-500 w-12 h-12 rounded-full flex items-center justify-center mr-4">
@@ -245,16 +210,16 @@ export default function AboutSection() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-bold text-white">A2SV Graduate</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">A2SV Graduate</h3>
                   </div>
-                  <p className="text-gray-300">
-                    Selected for the prestigious Google-backed Africa to Silicon Valley program, joining an 
-                    elite group of developers. A2SV has placed 50+ students at top tech companies like Google, 
+                  <p className="text-gray-600 dark:text-gray-300">
+                    Selected for the prestigious Google-backed Africa to Silicon Valley program, joining an
+                    elite group of developers. A2SV has placed 50+ students at top tech companies like Google,
                     Bloomberg, and Amazon.
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </Reveal>
           </div>
     </section>
   );

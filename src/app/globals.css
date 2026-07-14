@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Brand identity */
+  --color-brand-from: #3b82f6;
+  --color-brand-to: #8b5cf6;
+  --color-brand-accent: #ec4899;
+  --card-hover-rgb: 59, 130, 246;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-elevated: #f9fafb;
+  --color-surface-border: #e5e7eb;
+
+  /* Elevation */
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.08), 0 8px 24px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 4px 8px rgba(15, 23, 42, 0.08), 0 16px 40px rgba(15, 23, 42, 0.12);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+
+  --card-hover-rgb: 168, 85, 247;
+
+  --color-surface: #161b22;
+  --color-surface-elevated: #1c2129;
+  --color-surface-border: #2a2f3a;
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+.bg-brand-gradient {
+  background-image: linear-gradient(to right, var(--color-brand-from), var(--color-brand-to));
+}
+
+.text-brand-gradient {
+  background-image: linear-gradient(to right, var(--color-brand-from), var(--color-brand-to));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bg-surface-card {
+  background-color: var(--color-surface);
+  border-color: var(--color-surface-border);
+}
+
+.bg-surface-elevated {
+  background-color: var(--color-surface-elevated);
+  border-color: var(--color-surface-border);
 }

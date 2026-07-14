@@ -1,70 +1,136 @@
-import { motion } from "framer-motion";
+"use client";
+
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Project } from "@/data/projects";
 import TechTag from "./TechTag";
 
+const getInitials = (title: string) =>
+  title
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+
 const ProjectCard = ({ project }: { project: Project }) => {
+  const [hovered, setHovered] = useState(false);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+    void width;
+    void height;
+  };
+
+  const rotateX = useTransform(mouseY, [0, 260], [6, -6]);
+  const rotateY = useTransform(mouseX, [0, 300], [-6, 6]);
+  const spotlight = useMotionTemplate`radial-gradient(240px circle at ${mouseX}px ${mouseY}px, rgba(var(--card-hover-rgb), 0.12), transparent 80%)`;
+
   return (
     <motion.div
-      className="group relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-xl border border-gray-700"
-      whileHover={{ y: -10 }}
-      transition={{ duration: 0.3 }}
+      className="group relative bg-surface-card dark:bg-surface-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-shadow"
+      style={{
+        transformStyle: "preserve-3d",
+        rotateX,
+        rotateY,
+        boxShadow: hovered ? "var(--shadow-card-hover)" : "var(--shadow-card)",
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      whileHover={{ y: -6 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
     >
-      {/* Project image */}
+      {/* Spotlight overlay */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none z-10"
+        style={{ background: spotlight, opacity: hovered ? 1 : 0, transition: "opacity 0.3s ease" }}
+      />
+
+      {/* Project image / placeholder */}
       <div className="relative h-48 overflow-hidden">
-        <Image
-          src={project.imageUrl}
-          alt={project.title}
-          layout="fill"
-          objectFit="cover"
-          className="transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+        {project.imageUrl ? (
+          <Image
+            src={project.imageUrl}
+            alt={project.title}
+            fill
+            sizes="(min-width: 1024px) 384px, (min-width: 768px) 50vw, 100vw"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <div className="bg-brand-gradient h-full w-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+            <span className="text-white/90 text-4xl font-display font-bold tracking-wide">
+              {getInitials(project.title)}
+            </span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        {project.featured && (
+          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-gray-900/90 text-brand-gradient">
+            Flagship Project
+          </span>
+        )}
       </div>
-      
+
       {/* Project info */}
       <div className="p-6">
-        <div className="flex justify-between items-start mb-3">
-          <h3 className="text-xl font-bold text-white">{project.title}</h3>
-          <span className="px-2 py-1 bg-purple-500/20 text-purple-400 rounded-full text-xs">
+        <div className="flex justify-between items-start mb-3 gap-3">
+          <h3 className="text-xl font-bold font-display text-gray-900 dark:text-white">
+            {project.title}
+          </h3>
+          <span className="shrink-0 px-2 py-1 bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 rounded-full text-xs">
             {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
           </span>
         </div>
-        
-        <p className="text-gray-300 mb-4">{project.description}</p>
-        
+
+        <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
           {project.technologies.slice(0, 3).map((tech, index) => (
             <TechTag key={index} name={tech} />
           ))}
           {project.technologies.length > 3 && (
-            <span className="text-xs text-gray-400 bg-gray-700 px-2 py-1 rounded-full">
+            <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
               +{project.technologies.length - 3} more
             </span>
           )}
         </div>
-        
+
         {/* Links */}
-        <div className="flex justify-between mt-4">
-          <Link 
+        <div className="flex justify-between items-center mt-4">
+          <Link
             href={`/projects/${project.id}`}
-            className="text-purple-400 hover:text-purple-300 flex items-center group"
+            className="text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 flex items-center group/link text-sm font-medium"
           >
             View Details
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover/link:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
           </Link>
-          
-          <div className="flex space-x-3">
+
+          <div className="flex items-center space-x-3">
+            {project.isClientProject && !project.githubUrl && (
+              <span className="text-xs text-gray-400 dark:text-gray-500">Client Project</span>
+            )}
             {project.githubUrl && (
-              <a 
-                href={project.githubUrl} 
+              <a
+                href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
                 aria-label="GitHub repository"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -73,11 +139,11 @@ const ProjectCard = ({ project }: { project: Project }) => {
               </a>
             )}
             {project.demoUrl && (
-              <a 
-                href={project.demoUrl} 
+              <a
+                href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
                 aria-label="Live demo"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

@@ -92,7 +92,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
+          <label htmlFor="name" className="block text-gray-600 dark:text-gray-300 mb-2">Name</label>
           <input
             type="text"
             id="name"
@@ -100,13 +100,13 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="Your name"
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-gray-300 mb-2">Email</label>
+          <label htmlFor="email" className="block text-gray-600 dark:text-gray-300 mb-2">Email</label>
           <input
             type="email"
             id="email"
@@ -114,14 +114,14 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
             placeholder="your.email@example.com"
           />
         </div>
       </div>
       
       <div>
-        <label htmlFor="subject" className="block text-gray-300 mb-2">Subject</label>
+        <label htmlFor="subject" className="block text-gray-600 dark:text-gray-300 mb-2">Subject</label>
         <input
           type="text"
           id="subject"
@@ -129,13 +129,13 @@ const ContactForm = () => {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
           placeholder="What's this about?"
         />
       </div>
       
       <div>
-        <label htmlFor="message" className="block text-gray-300 mb-2">Message</label>
+        <label htmlFor="message" className="block text-gray-600 dark:text-gray-300 mb-2">Message</label>
         <textarea
           id="message"
           name="message"
@@ -143,14 +143,14 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
           placeholder="Your message here..."
         ></textarea>
       </div>
       
       <motion.button
         type="submit"
-        className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg px-6 py-3 font-medium shadow-lg hover:shadow-xl transition-shadow"
+        className="w-full bg-brand-gradient text-white rounded-lg px-6 py-3 font-medium shadow-lg hover:shadow-xl transition-shadow disabled:opacity-60"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         disabled={isSubmitting}

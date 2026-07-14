@@ -2,12 +2,22 @@
 'use client';
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useTheme } from "@/context/ThemeContext";
+import DarkModeToggle from "./DarkModeToggle";
 
 const Header = () => {
   const { theme } = useTheme();
+  const [scrolled, setScrolled] = useState(false);
   const bgColor = theme === "dark" ? "rgba(17, 24, 39, 0.8)" : "rgba(249, 250, 251, 0.8)";
-  
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const handleScrollTo = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -19,20 +29,24 @@ const Header = () => {
 
   return (
     <motion.header
-      className="fixed top-0 w-full z-50 py-4 backdrop-blur-md border-b border-gray-200 dark:border-gray-800"
+      className={`fixed top-0 w-full z-50 py-4 backdrop-blur-md border-b transition-shadow ${
+        scrolled
+          ? "border-gray-200 dark:border-gray-800 shadow-sm"
+          : "border-transparent"
+      }`}
       style={{ backgroundColor: bgColor }}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
-      <div className="container mx-auto px-4 flex justify-center items-center relative">
-        <div 
+      <div className="container mx-auto px-4 flex justify-between items-center relative">
+        <div
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="absolute left-4 text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600 cursor-pointer"
+          className="text-xl font-bold font-display text-brand-gradient cursor-pointer"
         >
           Sura Itana
         </div>
-        
+
         <nav className="hidden md:flex space-x-8">
           {["about", "projects", "contact"].map((item, i) => (
             <motion.div
@@ -46,7 +60,7 @@ const Header = () => {
                 className="capitalize text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-medium relative group"
               >
                 {item}
-                <motion.span 
+                <motion.span
                   className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
@@ -55,6 +69,8 @@ const Header = () => {
             </motion.div>
           ))}
         </nav>
+
+        <DarkModeToggle />
       </div>
     </motion.header>
   );
