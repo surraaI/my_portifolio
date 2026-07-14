@@ -9,19 +9,19 @@ import { EXPERTISE } from '@/utils/constants';
 
 export default function ExpertiseSection() {
   return (
-    <section id="expertise" className="scroll-mt-24 py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="expertise" className="scroll-mt-24 py-24 bg-[#EAECF0]/20 dark:bg-[#000000]">
       <div className="max-w-6xl mx-auto px-4">
         <Reveal className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold font-display text-brand-gradient mb-4">
             Expertise &amp; Skills
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-[#000000] dark:text-[#EAECF0] max-w-2xl mx-auto">
             What I focus on and the technologies I build with
           </p>
         </Reveal>
 
         <Reveal className="mb-16" delay={0.1}>
-          <h2 className="text-2xl font-bold font-display text-center mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-2xl font-bold font-display text-center mb-8 text-[#000000] dark:text-[#EAECF0]">
             Areas of Expertise
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -38,7 +38,7 @@ export default function ExpertiseSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <h2 className="text-2xl font-bold font-display text-center mb-8 text-gray-900 dark:text-white">
+          <h2 className="text-2xl font-bold font-display text-center mb-8 text-[#000000] dark:text-[#EAECF0]">
             Technical Skills
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">

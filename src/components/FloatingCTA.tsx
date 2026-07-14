@@ -27,7 +27,7 @@ const FloatingCTA = () => {
 
   return (
     <motion.div 
-      className="mt-24 bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-center relative overflow-hidden"
+      className="mt-24 bg-gradient-to-r from-[#233D4D] to-[#000000] rounded-3xl p-8 text-center relative overflow-hidden"
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -44,7 +44,7 @@ const FloatingCTA = () => {
         Ready to build something amazing?
       </motion.h3>
       
-      <motion.p className="text-blue-100 max-w-2xl mx-auto mb-6">
+      <motion.p className="text-[#EAECF0] max-w-2xl mx-auto mb-6">
         Lets collaborate on your next project. I bring technical expertise and creative problem-solving to every challenge.
       </motion.p>
       
@@ -57,7 +57,7 @@ const FloatingCTA = () => {
             window.scrollTo({ top: y, behavior: 'smooth' });
           }
         }}
-        className="inline-block px-8 py-3 bg-white text-blue-600 rounded-full font-bold shadow-lg hover:bg-gray-100 transition-colors cursor-pointer"
+        className="inline-block px-8 py-3 bg-[#FFFFFF] text-[#233D4D] rounded-full font-bold shadow-lg hover:bg-[#EAECF0] transition-colors cursor-pointer"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >

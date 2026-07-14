@@ -32,7 +32,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
         >
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-500/5 to-purple-600/5 dark:from-blue-900/10 dark:to-purple-900/10"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#233D4D]/5 to-[#000000]/5 dark:from-[#233D4D]/10 dark:to-[#000000]/10"></div>
         </motion.div>
         
         {/* 3D hero scene - falls back to lightweight particles on low-power/mobile devices */}
@@ -85,13 +85,13 @@ export default function Home() {
                   className="px-6 py-3 sm:px-8 sm:py-4 bg-brand-gradient text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
                   whileHover={{ 
                     scale: 1.05,
-                    background: "linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899)"
+                    background: "linear-gradient(45deg, #233D4D, #FE7F2D)"
                   }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <span className="relative z-10 text-sm sm:text-base">{HERO_CONTENT.cta}</span>
                   <motion.span 
-                    className="absolute inset-0 bg-gradient-to-r from-purple-700 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute inset-0 bg-gradient-to-r from-[#233D4D] to-[#FE7F2D] opacity-0 group-hover:opacity-100 transition-opacity"
                     initial={{ x: "-100%" }}
                     animate={{ x: "100%" }}
                     transition={{ 
@@ -118,7 +118,7 @@ export default function Home() {
                       whileHover={{ 
                         y: -5,
                         scale: 1.1,
-                        background: "linear-gradient(45deg, #3b82f6, #8b5cf6)"
+                        background: "linear-gradient(45deg, #233D4D, #FE7F2D)"
                       }}
                       whileTap={{ scale: 0.9 }}
                       initial={{ opacity: 0, y: 20 }}
@@ -187,7 +187,7 @@ export default function Home() {
                     }
                   }}
                 >
-                  <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-lg sm:text-xl font-bold">
+                  <div className="bg-gradient-to-r from-[#233D4D] to-[#FE7F2D] text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-lg sm:text-xl font-bold">
                     SI
                   </div>
                 </motion.div>
@@ -232,7 +232,7 @@ export default function Home() {
 
               {/* Animated background elements */}
               <motion.div
-                className="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-blue-500 opacity-10 blur-xl"
+                className="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-[#233D4D] opacity-10 blur-xl"
                 animate={{
                   x: [0, 20, 0],
                   y: [0, 20, 0],
@@ -244,7 +244,7 @@ export default function Home() {
                 }}
               />
               <motion.div
-                className="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-purple-500 opacity-10 blur-xl"
+                className="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-[#FE7F2D] opacity-10 blur-xl"
                 animate={{
                   x: [0, -20, 0],
                   y: [0, -20, 0],

@@ -40,7 +40,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
   return (
     <motion.div
-      className="group relative bg-surface-card dark:bg-surface-card rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 transition-shadow"
+      className="group relative bg-surface-card dark:bg-surface-card rounded-2xl overflow-hidden border border-[#233D4D] dark:border-[#233D4D] transition-shadow"
       style={{
         transformStyle: "preserve-3d",
         rotateX,
@@ -76,9 +76,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/50 via-transparent to-transparent" />
         {project.featured && (
-          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-white/90 dark:bg-gray-900/90 text-brand-gradient">
+          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#FFFFFF]/90 dark:bg-[#000000]/90 text-brand-gradient">
             Flagship Project
           </span>
         )}
@@ -87,15 +87,15 @@ const ProjectCard = ({ project }: { project: Project }) => {
       {/* Project info */}
       <div className="p-6">
         <div className="flex justify-between items-start mb-3 gap-3">
-          <h3 className="text-xl font-bold font-display text-gray-900 dark:text-white">
+          <h3 className="text-xl font-bold font-display text-[#000000] dark:text-[#EAECF0]">
             {project.title}
           </h3>
-          <span className="shrink-0 px-2 py-1 bg-purple-500/10 text-purple-600 dark:bg-purple-500/20 dark:text-purple-400 rounded-full text-xs">
+          <span className="shrink-0 px-2 py-1 bg-[#233D4D]/10 text-[#233D4D] dark:bg-[#233D4D]/20 dark:text-[#EAECF0] rounded-full text-xs">
             {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
           </span>
         </div>
 
-        <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+        <p className="text-[#000000] dark:text-[#EAECF0] mb-4">{project.description}</p>
 
         {/* Technologies */}
         <div className="flex flex-wrap gap-2 mb-4">
@@ -103,7 +103,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             <TechTag key={index} name={tech} />
           ))}
           {project.technologies.length > 3 && (
-            <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded-full">
+            <span className="text-xs text-[#233D4D] dark:text-[#EAECF0] bg-[#EAECF0]/20 dark:bg-[#233D4D]/20 px-2 py-1 rounded-full">
               +{project.technologies.length - 3} more
             </span>
           )}
@@ -113,7 +113,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         <div className="flex justify-between items-center mt-4">
           <Link
             href={`/projects/${project.id}`}
-            className="text-purple-600 dark:text-purple-400 hover:text-purple-500 dark:hover:text-purple-300 flex items-center group/link text-sm font-medium"
+            className="text-[#233D4D] dark:text-[#EAECF0] hover:text-[#FE7F2D] dark:hover:text-[#FE7F2D] flex items-center group/link text-sm font-medium"
           >
             View Details
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover/link:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
@@ -123,14 +123,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
           <div className="flex items-center space-x-3">
             {project.isClientProject && !project.githubUrl && (
-              <span className="text-xs text-gray-400 dark:text-gray-500">Client Project</span>
+              <span className="text-xs text-[#233D4D] dark:text-[#EAECF0]">Client Project</span>
             )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                className="text-[#233D4D] hover:text-[#000000] dark:text-[#EAECF0] dark:hover:text-[#FE7F2D] transition-colors"
                 aria-label="GitHub repository"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -143,7 +143,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white transition-colors"
+                className="text-[#233D4D] hover:text-[#000000] dark:text-[#EAECF0] dark:hover:text-[#FE7F2D] transition-colors"
                 aria-label="Live demo"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

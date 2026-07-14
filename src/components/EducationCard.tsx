@@ -17,21 +17,21 @@ const EducationCard = ({
 }: EducationCardProps) => {
   return (
     <motion.div
-      className="bg-surface-card rounded-2xl p-6 shadow-xl border border-purple-500/30"
+      className="bg-surface-card rounded-2xl p-6 shadow-xl border border-[#233D4D]/30"
       whileHover={{ y: -10 }}
       transition={{ duration: 0.3 }}
     >
       <div className="flex items-start mb-4">
-        <div className="bg-purple-500/10 dark:bg-purple-500/20 p-2 rounded-lg">
+        <div className="bg-[#233D4D]/10 dark:bg-[#233D4D]/20 p-2 rounded-lg">
           {icon}
         </div>
         <div className="ml-4">
-          <h3 className="text-xl font-bold text-gray-900 dark:text-white">{title}</h3>
-          <p className="text-purple-600 dark:text-purple-400">{institution}</p>
-          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{period}</p>
+          <h3 className="text-xl font-bold text-[#000000] dark:text-[#EAECF0]">{title}</h3>
+          <p className="text-[#233D4D] dark:text-[#EAECF0]">{institution}</p>
+          <p className="text-[#233D4D] dark:text-[#EAECF0] text-sm mt-1">{period}</p>
         </div>
       </div>
-      <p className="text-gray-600 dark:text-gray-300">{description}</p>
+      <p className="text-[#000000] dark:text-[#EAECF0]">{description}</p>
     </motion.div>
   );
 };

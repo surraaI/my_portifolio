@@ -3,27 +3,27 @@ import { motion } from "framer-motion";
 const TechTag = ({ name }: { name: string }) => {
   const getColor = (tech: string) => {
     const colors: Record<string, string> = {
-      "Node.js": "bg-green-500/20 text-green-400",
-      "Express": "bg-gray-500/20 text-gray-400",
-      "MongoDB": "bg-green-600/20 text-green-500",
-      "React": "bg-blue-500/20 text-blue-400",
-      "Socket.IO": "bg-gray-500/20 text-gray-400",
-      "Python": "bg-yellow-500/20 text-yellow-400",
-      "FastAPI": "bg-teal-500/20 text-teal-400",
-      "PostgreSQL": "bg-blue-600/20 text-blue-500",
-      "Docker": "bg-blue-400/20 text-blue-300",
-      "Next.js": "bg-black/20 text-gray-300",
-      "Tailwind CSS": "bg-cyan-500/20 text-cyan-400",
-      "Flutter": "bg-blue-400/20 text-blue-300",
-      "Dart": "bg-blue-500/20 text-blue-400",
-      "BLoC": "bg-purple-500/20 text-purple-400",
-      "Google Maps API": "bg-red-500/20 text-red-400",
-      "NestJS": "bg-red-600/20 text-red-500",
-      "TypeScript": "bg-blue-600/20 text-blue-500",
-      "JWT": "bg-purple-600/20 text-purple-500"
+      "Node.js": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Express": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "MongoDB": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "React": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Socket.IO": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Python": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "FastAPI": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "PostgreSQL": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Docker": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Next.js": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Tailwind CSS": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Flutter": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Dart": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "BLoC": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "Google Maps API": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "NestJS": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "TypeScript": "bg-[#233D4D]/20 text-[#EAECF0]",
+      "JWT": "bg-[#233D4D]/20 text-[#EAECF0]"
     };
     
-    return colors[tech] || "bg-purple-500/20 text-purple-400";
+    return colors[tech] || "bg-[#233D4D]/20 text-[#EAECF0]";
   };
   
   return (

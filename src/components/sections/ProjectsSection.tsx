@@ -19,13 +19,13 @@ export default function ProjectsSection() {
     : projects.filter(project => project.category === activeCategory);
 
   return (
-    <section id="projects" className="scroll-mt-24 py-24 bg-gray-50 dark:bg-gray-900">
+    <section id="projects" className="scroll-mt-24 py-24 bg-[#EAECF0]/20 dark:bg-[#000000]">
       <div className="max-w-6xl mx-auto px-4">
         <Reveal className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold font-display text-brand-gradient mb-4">
             My Projects
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-xl text-[#000000] dark:text-[#EAECF0] max-w-2xl mx-auto">
             Showcasing my technical solutions and creative implementations
           </p>
         </Reveal>
@@ -74,7 +74,7 @@ export default function ProjectsSection() {
 
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12">
-            <h3 className="text-xl text-gray-500 dark:text-gray-400">No projects found in this category</h3>
+            <h3 className="text-xl text-[#233D4D] dark:text-[#EAECF0]">No projects found in this category</h3>
             <button
               className="mt-4 px-4 py-2 bg-brand-gradient text-white rounded-full"
               onClick={() => setActiveCategory('all')}

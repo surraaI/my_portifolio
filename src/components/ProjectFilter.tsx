@@ -18,7 +18,7 @@ const ProjectFilter = ({
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             activeCategory === category.id
               ? "bg-brand-gradient text-white"
-              : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+              : "bg-[#EAECF0] text-[#000000] hover:bg-[#233D4D] dark:bg-[#000000] dark:text-[#EAECF0] dark:hover:bg-[#233D4D]"
           }`}
           onClick={() => setActiveCategory(category.id)}
           whileHover={{ scale: 1.05 }}

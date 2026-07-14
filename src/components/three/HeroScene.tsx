@@ -27,7 +27,7 @@ const RotatingBlob = () => {
       <mesh ref={meshRef}>
         <icosahedronGeometry args={[1.1, 4]} />
         <MeshDistortMaterial
-          color="#8b7cf6"
+          color="#233D4D"
           distort={0.4}
           speed={1.5}
           roughness={0.45}
@@ -46,9 +46,9 @@ const HeroScene = () => {
       camera={{ position: [0, 0, 5], fov: 42 }}
     >
       <ambientLight intensity={1.2} />
-      <hemisphereLight args={["#bfdbfe", "#1e1b4b", 0.6]} />
-      <pointLight position={[4, 3, 4]} intensity={3.5} color="#60a5fa" />
-      <pointLight position={[-4, -2, -2]} intensity={3} color="#a78bfa" />
+      <hemisphereLight args={["#EAECF0", "#233D4D", 0.6]} />
+      <pointLight position={[4, 3, 4]} intensity={3.5} color="#FE7F2D" />
+      <pointLight position={[-4, -2, -2]} intensity={3} color="#233D4D" />
       <Suspense fallback={null}>
         <RotatingBlob />
       </Suspense>

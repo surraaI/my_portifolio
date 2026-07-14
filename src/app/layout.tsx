@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-gray-50 dark:bg-gray-900 overflow-x-hidden`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-[#EAECF0] dark:bg-[#000000] overflow-x-hidden`}>
         <ThemeProvider>
           <CustomCursor />
           <Header />

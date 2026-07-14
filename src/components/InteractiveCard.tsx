@@ -31,7 +31,7 @@ const InteractiveCard = ({
 
   return (
     <motion.div
-      className={`relative bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden ${className}`}
+      className={`relative bg-[#EAECF0] dark:bg-[#233D4D] rounded-2xl p-8 shadow-xl border border-[#233D4D] dark:border-[#233D4D] overflow-hidden ${className}`}
       style={{ 
         transformStyle: "preserve-3d",
         rotateX,
@@ -53,18 +53,18 @@ const InteractiveCard = ({
         }}
       />
       
-      <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-2 rounded-lg w-14 h-14 flex items-center justify-center mb-6">
-        <div className="bg-white dark:bg-gray-800 w-10 h-10 rounded-lg flex items-center justify-center">
-          <span className="text-blue-600 font-bold text-lg">{index + 1}</span>
+      <div className="bg-gradient-to-r from-[#233D4D] to-[#000000] p-2 rounded-lg w-14 h-14 flex items-center justify-center mb-6">
+        <div className="bg-[#FFFFFF] dark:bg-[#000000] w-10 h-10 rounded-lg flex items-center justify-center">
+          <span className="text-[#233D4D] dark:text-[#EAECF0] font-bold text-lg">{index + 1}</span>
         </div>
       </div>
       
-      <h3 className="font-bold text-xl mb-3 text-gray-900 dark:text-white">{title}</h3>
-      <p className="text-gray-600 dark:text-gray-400">{description}</p>
+      <h3 className="font-bold text-xl mb-3 text-[#000000] dark:text-[#EAECF0]">{title}</h3>
+      <p className="text-[#000000] dark:text-[#EAECF0]">{description}</p>
       
       {/* 3D effect indicator */}
       <motion.div 
-        className="absolute bottom-4 right-4 text-xs text-gray-400"
+        className="absolute bottom-4 right-4 text-xs text-[#233D4D] dark:text-[#EAECF0]"
         animate={{ opacity: hovered ? 1 : 0 }}
         transition={{ duration: 0.2 }}
       >

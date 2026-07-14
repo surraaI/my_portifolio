@@ -92,7 +92,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label htmlFor="name" className="block text-gray-600 dark:text-gray-300 mb-2">Name</label>
+          <label htmlFor="name" className="block text-[#000000] dark:text-[#EAECF0] mb-2">Name</label>
           <input
             type="text"
             id="name"
@@ -100,13 +100,13 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full bg-[#EAECF0]/20 dark:bg-[#233D4D] border border-[#233D4D] dark:border-[#233D4D] rounded-lg px-4 py-3 text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0] focus:outline-none focus:ring-2 focus:ring-[#FE7F2D]"
             placeholder="Your name"
           />
         </div>
         
         <div>
-          <label htmlFor="email" className="block text-gray-600 dark:text-gray-300 mb-2">Email</label>
+          <label htmlFor="email" className="block text-[#000000] dark:text-[#EAECF0] mb-2">Email</label>
           <input
             type="email"
             id="email"
@@ -114,14 +114,14 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full bg-[#EAECF0]/20 dark:bg-[#233D4D] border border-[#233D4D] dark:border-[#233D4D] rounded-lg px-4 py-3 text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0] focus:outline-none focus:ring-2 focus:ring-[#FE7F2D]"
             placeholder="your.email@example.com"
           />
         </div>
       </div>
       
       <div>
-        <label htmlFor="subject" className="block text-gray-600 dark:text-gray-300 mb-2">Subject</label>
+        <label htmlFor="subject" className="block text-[#000000] dark:text-[#EAECF0] mb-2">Subject</label>
         <input
           type="text"
           id="subject"
@@ -129,13 +129,13 @@ const ContactForm = () => {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="w-full bg-[#EAECF0]/20 dark:bg-[#233D4D] border border-[#233D4D] dark:border-[#233D4D] rounded-lg px-4 py-3 text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0] focus:outline-none focus:ring-2 focus:ring-[#FE7F2D]"
           placeholder="What's this about?"
         />
       </div>
       
       <div>
-        <label htmlFor="message" className="block text-gray-600 dark:text-gray-300 mb-2">Message</label>
+        <label htmlFor="message" className="block text-[#000000] dark:text-[#EAECF0] mb-2">Message</label>
         <textarea
           id="message"
           name="message"
@@ -143,7 +143,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           rows={5}
-          className="w-full bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          className="w-full bg-[#EAECF0]/20 dark:bg-[#233D4D] border border-[#233D4D] dark:border-[#233D4D] rounded-lg px-4 py-3 text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0] focus:outline-none focus:ring-2 focus:ring-[#FE7F2D]"
           placeholder="Your message here..."
         ></textarea>
       </div>
@@ -159,7 +159,7 @@ const ContactForm = () => {
       </motion.button>
       
       {submitMessage && (
-        <div className="mt-4 p-4 bg-green-500/20 text-green-400 rounded-lg">
+        <div className="mt-4 p-4 bg-[#233D4D]/20 text-[#EAECF0] rounded-lg">
           {submitMessage}
         </div>
       )}

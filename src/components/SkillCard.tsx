@@ -9,25 +9,25 @@ interface SkillCardProps {
 
 const SkillCard = ({ icon, name, level, description }: SkillCardProps) => {
   const levelColors = {
-    Beginner: 'bg-blue-500/20 text-blue-400',
-    Intermediate: 'bg-purple-500/20 text-purple-400',
-    Advanced: 'bg-pink-500/20 text-pink-400'
+    Beginner: 'bg-[#233D4D]/20 text-[#EAECF0]',
+    Intermediate: 'bg-[#233D4D]/20 text-[#EAECF0]',
+    Advanced: 'bg-[#233D4D]/20 text-[#EAECF0]'
   };
   
   return (
     <motion.div
-      className="bg-surface-card rounded-2xl p-6 shadow-xl border border-gray-200 dark:border-gray-700 flex flex-col items-center text-center"
+      className="bg-surface-card rounded-2xl p-6 shadow-xl border border-[#233D4D] dark:border-[#233D4D] flex flex-col items-center text-center"
       whileHover={{ y: -10 }}
       transition={{ duration: 0.3 }}
     >
       <div className="mb-4">
         {icon}
       </div>
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{name}</h3>
+      <h3 className="text-xl font-bold text-[#000000] dark:text-[#EAECF0] mb-2">{name}</h3>
       <span className={`text-sm px-3 py-1 rounded-full ${levelColors[level]} mb-3`}>
         {level}
       </span>
-      <p className="text-gray-600 dark:text-gray-300 text-sm">{description}</p>
+      <p className="text-[#000000] dark:text-[#EAECF0] text-sm">{description}</p>
     </motion.div>
   );
 };

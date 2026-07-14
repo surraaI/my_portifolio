@@ -38,15 +38,15 @@ function randomBlobRadius() {
 function variantClasses(variant: Variant): string {
   switch (variant) {
     case "glow":
-      return "bg-gradient-to-br from-blue-400/25 to-purple-500/20 blur-md";
+      return "bg-gradient-to-br from-[#FE7F2D]/25 to-[#233D4D]/20 blur-md";
     case "glass":
-      return "bg-white/14 dark:bg-white/6 border border-white/30 dark:border-white/10 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)]";
+      return "bg-[#EAECF0]/14 dark:bg-[#233D4D]/6 border border-[#233D4D]/30 dark:border-[#EAECF0]/10 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.06)]";
     case "blob-glass":
-      return "bg-white/12 dark:bg-white/[0.04] border border-white/25 dark:border-white/8 backdrop-blur-lg";
+      return "bg-[#EAECF0]/12 dark:bg-[#233D4D]/[0.04] border border-[#233D4D]/25 dark:border-[#EAECF0]/8 backdrop-blur-lg";
     case "blob-gradient":
-      return "bg-gradient-to-br from-purple-400/16 to-blue-400/14 border border-white/15 dark:border-white/8 backdrop-blur-sm";
+      return "bg-gradient-to-br from-[#233D4D]/16 to-[#000000]/14 border border-[#EAECF0]/15 dark:border-[#EAECF0]/8 backdrop-blur-sm";
     case "ring":
-      return "border-2 border-blue-400/40 dark:border-purple-400/40 backdrop-blur-sm";
+      return "border-2 border-[#233D4D]/40 dark:border-[#EAECF0]/40 backdrop-blur-sm";
   }
 }
 
@@ -230,11 +230,11 @@ export default function CustomCursor() {
       <div className="pointer-events-none fixed inset-0 z-[100]" aria-hidden>
         <div
           ref={ringRef}
-          className="absolute top-0 left-0 w-9 h-9 rounded-full border-2 border-blue-500/70 dark:border-purple-400/70 opacity-0 will-change-transform"
+          className="absolute top-0 left-0 w-9 h-9 rounded-full border-2 border-[#233D4D]/70 dark:border-[#EAECF0]/70 opacity-0 will-change-transform"
         />
         <div
           ref={dotRef}
-          className="absolute top-0 left-0 w-2 h-2 rounded-full bg-blue-500 dark:bg-purple-400 opacity-0 will-change-transform"
+          className="absolute top-0 left-0 w-2 h-2 rounded-full bg-[#233D4D] dark:bg-[#EAECF0] opacity-0 will-change-transform"
         />
       </div>
     </>

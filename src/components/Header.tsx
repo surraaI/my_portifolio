@@ -9,7 +9,7 @@ import DarkModeToggle from "./DarkModeToggle";
 const Header = () => {
   const { theme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const bgColor = theme === "dark" ? "rgba(17, 24, 39, 0.8)" : "rgba(249, 250, 251, 0.8)";
+  const bgColor = theme === "dark" ? "rgba(0, 0, 0, 0.8)" : "rgba(234, 236, 240, 0.8)";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -31,7 +31,7 @@ const Header = () => {
     <motion.header
       className={`fixed top-0 w-full z-50 py-4 backdrop-blur-md border-b transition-shadow ${
         scrolled
-          ? "border-gray-200 dark:border-gray-800 shadow-sm"
+          ? "border-[#233D4D] dark:border-[#233D4D] shadow-sm"
           : "border-transparent"
       }`}
       style={{ backgroundColor: bgColor }}
@@ -57,11 +57,11 @@ const Header = () => {
             >
               <button
                 onClick={() => handleScrollTo(item)}
-                className="capitalize text-gray-600 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400 transition-colors font-medium relative group"
+                className="capitalize text-[#000000] dark:text-[#EAECF0] hover:text-[#FE7F2D] dark:hover:text-[#FE7F2D] transition-colors font-medium relative group"
               >
                 {item}
                 <motion.span
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-500 group-hover:w-full transition-all duration-300"
+                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FE7F2D] group-hover:w-full transition-all duration-300"
                   initial={{ width: 0 }}
                   whileHover={{ width: "100%" }}
                 />

@@ -10,7 +10,7 @@ const DarkModeToggle = () => {
   return (
     <motion.button
       onClick={toggleTheme}
-      className="w-12 h-6 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center p-1"
+      className="w-12 h-6 rounded-full bg-[#EAECF0] dark:bg-[#233D4D] flex items-center p-1"
       animate={{
         justifyContent: isDark ? "flex-end" : "flex-start",
       }}
@@ -19,7 +19,7 @@ const DarkModeToggle = () => {
       aria-label="Toggle dark mode"
     >
       <motion.div
-        className="w-4 h-4 rounded-full bg-white flex items-center justify-center"
+        className="w-4 h-4 rounded-full bg-[#FFFFFF] dark:bg-[#000000] flex items-center justify-center"
         layout
         transition={{ type: "spring", stiffness: 700, damping: 30 }}
       >
@@ -28,7 +28,7 @@ const DarkModeToggle = () => {
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 24 24" 
             fill="currentColor" 
-            className="w-3 h-3 text-gray-800"
+            className="w-3 h-3 text-[#000000]"
             initial={{ rotate: 0 }}
             animate={{ rotate: 360 }}
             transition={{ duration: 0.5 }}
@@ -40,7 +40,7 @@ const DarkModeToggle = () => {
             xmlns="http://www.w3.org/2000/svg" 
             viewBox="0 0 24 24" 
             fill="currentColor" 
-            className="w-3 h-3 text-yellow-500"
+            className="w-3 h-3 text-[#FE7F2D]"
             initial={{ rotate: 0 }}
             animate={{ rotate: 360 }}
             transition={{ duration: 0.5 }}
