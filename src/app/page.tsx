@@ -2,17 +2,16 @@
 'use client';
 
 import { motion } from "framer-motion";
-import { 
-  HERO_CONTENT, 
-  SOCIAL_LINKS, 
-  EXPERTISE, 
-  STATS 
+import {
+  HERO_CONTENT,
+  SOCIAL_LINKS,
+  STATS
 } from "@/utils/constants";
 import Image from "next/image";
 import AboutSection from "@/components/sections/AboutSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
+import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import ContactSection from "@/components/sections/ContactSection";
-import InteractiveCard from "@/components/InteractiveCard";
 import FloatingCTA from "@/components/FloatingCTA";
 import Reveal from "@/components/Reveal";
 import Hero3D from "@/components/three/Hero3D";
@@ -259,35 +258,21 @@ export default function Home() {
             </motion.div>
           ))}
         </Reveal>
+      </div>
 
-        {/* Expertise Section */}
-        <Reveal className="mt-24">
-          <h2 className="text-3xl font-bold font-display text-center mb-12 text-gray-900 dark:text-white">
-            Areas of Expertise
-          </h2>
+      {/* Projects Section */}
+      <ProjectsSection />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {EXPERTISE.map((item, index) => (
-              <InteractiveCard
-                key={index}
-                title={item.title}
-                description={item.description}
-                index={index}
-                className="hover:shadow-2xl"
-              />
-            ))}
-          </div>
-        </Reveal>
-
-        {/* 3D Floating Call to Action */}
+      {/* 3D Floating Call to Action */}
+      <div className="max-w-6xl mx-auto px-4 py-8">
         <Reveal>
           <FloatingCTA />
         </Reveal>
       </div>
 
-      {/* Projects Section */}
-      <ProjectsSection />
-      
+      {/* Expertise & Skills Section */}
+      <ExpertiseSection />
+
       {/* About Section */}
       <AboutSection />
 

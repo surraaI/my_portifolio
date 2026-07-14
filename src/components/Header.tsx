@@ -48,7 +48,7 @@ const Header = () => {
         </div>
 
         <nav className="hidden md:flex space-x-8">
-          {["about", "projects", "contact"].map((item, i) => (
+          {["projects", "expertise", "about", "contact"].map((item, i) => (
             <motion.div
               key={item}
               initial={{ opacity: 0, y: -10 }}

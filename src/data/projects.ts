@@ -182,40 +182,6 @@ export const projects: Project[] = [
       "Shopping cart functionality"
     ]
   },
-  {
-    id: "transittrack",
-    title: "TransitTrack",
-    description: "Real-time bus tracking and payment services",
-    longDescription: "Semifinalist in Africa-wide A2SV Hackathon; developed TransitTrack for real-time bus tracking and payment services. Built with FastAPI (backend) and Flutter (frontend) for seamless full-stack functionality.",
-    category: "fullstack",
-    technologies: ["FastAPI", "Flutter", "PostgreSQL", "Google Maps API"],
-    githubUrl: "https://github.com/Transit-Track/TransitTrack",
-    imageUrl: "",
-    features: [
-      "Real-time bus tracking",
-      "Mobile payment integration",
-      "Route optimization",
-      "User notifications",
-      "Admin dashboard"
-    ]
-  },
-  {
-    id: "health-tracker",
-    title: "Health Tracker Web",
-    description: "Full-stack health tracker app for university",
-    longDescription: "Built and led a team for a full-stack health tracker app using NestJS, MongoDB, and JWT auth. Developed both frontend (HTML/CSS/JS) and backend, ensuring seamless integration via TypeScript.",
-    category: "fullstack",
-    technologies: ["NestJS", "TypeScript", "MongoDB", "JWT"],
-    githubUrl: "https://github.com/surraaI/web-group-project",
-    imageUrl: "/images/projects/health-tracker.jpg",
-    features: [
-      "Health data tracking",
-      "User authentication",
-      "Data visualization",
-      "Goal setting",
-      "Progress reports"
-    ]
-  }
 ];
 
 export const categories = [

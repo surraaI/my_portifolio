@@ -4,7 +4,6 @@
 import Image from 'next/image';
 import EducationCard from '@/components/EducationCard';
 import { Icons } from '@/utils/icons';
-import SkillCard from '@/components/SkillCard';
 import Reveal from '@/components/Reveal';
 
 export default function AboutSection() {
@@ -123,66 +122,8 @@ export default function AboutSection() {
               </Reveal>
             </div>
 
-            {/* Key Skills Section */}
-            <Reveal className="mt-16" delay={0.1}>
-              <h2 className="text-3xl font-bold font-display text-center mb-12 text-gray-900 dark:text-white">
-                Technical Expertise
-              </h2>
-
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                <SkillCard
-                  icon={<Icons.python />}
-                  name="Python"
-                  level="Advanced"
-                  description="Backend development with FastAPI and Flask"
-                />
-
-                <SkillCard
-                  icon={<Icons.js />}
-                  name="JavaScript"
-                  level="Advanced"
-                  description="Full-stack development with Node.js and React"
-                />
-
-                <SkillCard
-                  icon={<Icons.nodejs />}
-                  name="Node.js"
-                  level="Advanced"
-                  description="Building scalable backend systems and APIs"
-                />
-
-                <SkillCard
-                  icon={<Icons.react />}
-                  name="React"
-                  level="Advanced"
-                  description="Creating responsive and interactive UIs"
-                />
-
-                <SkillCard
-                  icon={<Icons.flutter />}
-                  name="Flutter"
-                  level="Intermediate"
-                  description="Building cross-platform mobile applications"
-                />
-
-                <SkillCard
-                  icon={<Icons.mongodb />}
-                  name="MongoDB"
-                  level="Advanced"
-                  description="NoSQL database design and management"
-                />
-
-                <SkillCard
-                  icon={<Icons.postgresql />}
-                  name="PostgreSQL"
-                  level="Intermediate"
-                  description="Relational database design and optimization"
-                />
-              </div>
-            </Reveal>
-
             {/* Key Achievements */}
-            <Reveal className="mt-24" delay={0.1}>
+            <Reveal className="mt-16" delay={0.1}>
               <h2 className="text-3xl font-bold font-display text-center mb-12 text-gray-900 dark:text-white">
                 Key Achievements
               </h2>
