@@ -73,3 +73,10 @@ body {
   background-color: var(--color-surface-elevated);
   border-color: var(--color-surface-border);
 }
+
+@media (hover: hover) and (pointer: fine) {
+  body.custom-cursor-active,
+  body.custom-cursor-active * {
+    cursor: none !important;
+  }
+}
