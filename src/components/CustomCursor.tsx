@@ -213,25 +213,30 @@ export default function CustomCursor() {
   if (!bubbles) return null;
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-40" aria-hidden>
-      {bubbles.map((cfg, i) => (
+    <>
+      <div className="pointer-events-none fixed inset-0 z-40" aria-hidden>
+        {bubbles.map((cfg, i) => (
+          <div
+            key={cfg.id}
+            ref={(el) => {
+              bubbleElsRef.current[i] = el;
+            }}
+            className={`absolute top-0 left-0 rounded-full will-change-transform ${variantClasses(cfg.variant)}`}
+            style={{ width: cfg.size, height: cfg.size, borderRadius: cfg.radius }}
+          />
+        ))}
+      </div>
+      {/* Separate top-level stacking context so the cursor stays above the fixed header (z-50) everywhere. */}
+      <div className="pointer-events-none fixed inset-0 z-[100]" aria-hidden>
         <div
-          key={cfg.id}
-          ref={(el) => {
-            bubbleElsRef.current[i] = el;
-          }}
-          className={`absolute top-0 left-0 rounded-full will-change-transform ${variantClasses(cfg.variant)}`}
-          style={{ width: cfg.size, height: cfg.size, borderRadius: cfg.radius }}
+          ref={ringRef}
+          className="absolute top-0 left-0 w-9 h-9 rounded-full border-2 border-blue-500/70 dark:border-purple-400/70 opacity-0 will-change-transform"
         />
-      ))}
-      <div
-        ref={ringRef}
-        className="absolute top-0 left-0 w-9 h-9 rounded-full border-2 border-blue-500/70 dark:border-purple-400/70 opacity-0 will-change-transform z-[70]"
-      />
-      <div
-        ref={dotRef}
-        className="absolute top-0 left-0 w-2 h-2 rounded-full bg-blue-500 dark:bg-purple-400 opacity-0 will-change-transform z-[70]"
-      />
-    </div>
+        <div
+          ref={dotRef}
+          className="absolute top-0 left-0 w-2 h-2 rounded-full bg-blue-500 dark:bg-purple-400 opacity-0 will-change-transform"
+        />
+      </div>
+    </>
   );
 }

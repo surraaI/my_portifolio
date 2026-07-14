@@ -73,6 +73,12 @@ export default function ExpertiseSection() {
               description="Creating responsive and interactive UIs"
             />
             <SkillCard
+              icon={<Icons.nextjs />}
+              name="Next.js"
+              level="Advanced"
+              description="Server-rendered React apps with the App Router"
+            />
+            <SkillCard
               icon={<Icons.flutter />}
               name="Flutter"
               level="Intermediate"
@@ -89,6 +95,24 @@ export default function ExpertiseSection() {
               name="PostgreSQL"
               level="Intermediate"
               description="Relational database design and optimization"
+            />
+            <SkillCard
+              icon={<Icons.redis />}
+              name="Redis"
+              level="Intermediate"
+              description="In-memory caching and message brokering for high-throughput systems"
+            />
+            <SkillCard
+              icon={<Icons.celery />}
+              name="Celery"
+              level="Intermediate"
+              description="Distributed task queues for async and background job processing"
+            />
+            <SkillCard
+              icon={<Icons.websocket />}
+              name="WebSocket"
+              level="Advanced"
+              description="Real-time bidirectional communication for live features"
             />
           </div>
         </Reveal>

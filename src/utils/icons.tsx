@@ -90,4 +90,30 @@ export const Icons = {
       <path fill="#FFF" d="M25.5,6.3c-8.4,0.7-15,7.7-15,16.3c0,0.5,0,1,0.1,1.4h12L15.8,36c7.6-1.2,13.5-7.6,13.9-15.5h-11L25.5,6.3z" />
     </svg>
   ),
+  redis: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-8 h-8">
+      <path fill="#A41E11" d="M24 6 L41 13 L24 20 L7 13 Z" />
+      <path fill="#D82C20" d="M24 17 L41 24 L24 31 L7 24 Z" />
+      <path fill="#A41E11" d="M24 28 L41 35 L24 42 L7 35 Z" />
+    </svg>
+  ),
+  celery: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-8 h-8">
+      <circle cx="24" cy="24" r="18" fill="#37814A" />
+      <path fill="#FFF" d="M15 31c3-8 3-15 9-19-2 5-2 11 0 15 3-6 6-10 11-11-3 5-4 10-3 16-4 2-9 2-13-1-1 0-3 0-4 0z" />
+    </svg>
+  ),
+  websocket: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-8 h-8">
+      <circle cx="24" cy="24" r="18" fill="#2C3E50" />
+      <path fill="#FFF" d="M14 19l-5 5 5 5v-4h8v-2h-8v-4zM34 19v4h-8v2h8v4l5-5z" />
+    </svg>
+  ),
+  nextjs: () => (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" className="w-8 h-8">
+      <circle cx="24" cy="24" r="18" fill="#000000" />
+      <path fill="#FFF" d="M18 16h2.8l9.6 12.6V16H33v18h-2.6L20.6 21.1V34H18z" />
+      <rect x="29.2" y="21" width="1.8" height="9" fill="#FFF" />
+    </svg>
+  ),
 };
