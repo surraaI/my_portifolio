@@ -1,4 +1,6 @@
 import { motion } from 'framer-motion';
+import { CardContent } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 interface SkillCardProps {
   icon: React.ReactNode;
@@ -8,26 +10,25 @@ interface SkillCardProps {
 }
 
 const SkillCard = ({ icon, name, level, description }: SkillCardProps) => {
-  const levelColors = {
-    Beginner: 'bg-[#233D4D]/20 text-[#EAECF0]',
-    Intermediate: 'bg-[#233D4D]/20 text-[#EAECF0]',
-    Advanced: 'bg-[#233D4D]/20 text-[#EAECF0]'
-  };
-  
   return (
     <motion.div
-      className="bg-surface-card rounded-2xl p-6 shadow-xl border border-[#233D4D] dark:border-[#233D4D] flex flex-col items-center text-center"
+      className="bg-card text-card-foreground rounded-2xl shadow-xl border border-[#233D4D] dark:border-[#233D4D]"
       whileHover={{ y: -10 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="mb-4">
-        {icon}
-      </div>
-      <h3 className="text-xl font-bold text-[#000000] dark:text-[#EAECF0] mb-2">{name}</h3>
-      <span className={`text-sm px-3 py-1 rounded-full ${levelColors[level]} mb-3`}>
-        {level}
-      </span>
-      <p className="text-[#000000] dark:text-[#EAECF0] text-sm">{description}</p>
+      <CardContent className="flex flex-col items-center text-center py-6">
+        <div className="mb-4">
+          {icon}
+        </div>
+        <h3 className="text-xl font-bold text-[#000000] dark:text-[#EAECF0] mb-2">{name}</h3>
+        <Badge
+          variant="secondary"
+          className="bg-[#233D4D]/10 text-[#233D4D] dark:bg-[#233D4D]/40 dark:text-[#EAECF0] border-transparent mb-3"
+        >
+          {level}
+        </Badge>
+        <p className="text-[#000000] dark:text-[#EAECF0] text-sm">{description}</p>
+      </CardContent>
     </motion.div>
   );
 };

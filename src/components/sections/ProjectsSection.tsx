@@ -7,6 +7,7 @@ import Link from 'next/link';
 import ProjectCard from '@/components/ProjectCard';
 import ProjectFilter from '@/components/ProjectFilter';
 import Reveal from '@/components/Reveal';
+import { Button } from '@/components/ui/button';
 import { projects, categories } from '@/data/projects';
 
 export default function ProjectsSection() {
@@ -75,12 +76,13 @@ export default function ProjectsSection() {
         {filteredProjects.length === 0 ? (
           <div className="text-center py-12">
             <h3 className="text-xl text-[#233D4D] dark:text-[#EAECF0]">No projects found in this category</h3>
-            <button
-              className="mt-4 px-4 py-2 bg-brand-gradient text-white rounded-full"
+            <Button
+              variant="brand"
+              className="mt-4"
               onClick={() => setActiveCategory('all')}
             >
               View All Projects
-            </button>
+            </Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

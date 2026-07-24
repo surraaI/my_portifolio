@@ -15,6 +15,8 @@ import ContactSection from "@/components/sections/ContactSection";
 import FloatingCTA from "@/components/FloatingCTA";
 import Reveal from "@/components/Reveal";
 import Hero3D from "@/components/three/Hero3D";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -82,7 +84,10 @@ export default function Home() {
                       window.scrollTo({ top: y, behavior: 'smooth' });
                     }
                   }}
-                  className="px-6 py-3 sm:px-8 sm:py-4 bg-brand-gradient text-white rounded-full font-bold shadow-xl hover:shadow-2xl transition-all relative overflow-hidden group"
+                  className={cn(
+                    buttonVariants({ variant: "brand", size: "lg" }),
+                    "sm:px-8 sm:py-4 relative overflow-hidden group hover:opacity-100"
+                  )}
                   whileHover={{ 
                     scale: 1.05,
                     background: "linear-gradient(45deg, #233D4D, #FE7F2D)"

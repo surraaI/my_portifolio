@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 const FloatingCTA = () => {
   const [particles, setParticles] = useState<Array<{
@@ -48,21 +49,26 @@ const FloatingCTA = () => {
         Lets collaborate on your next project. I bring technical expertise and creative problem-solving to every challenge.
       </motion.p>
       
-      <motion.button
-        onClick={() => {
-          const contactSection = document.getElementById('contact');
-          if (contactSection) {
-            const offset = 96;
-            const y = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-          }
-        }}
-        className="inline-block px-8 py-3 bg-[#FFFFFF] text-[#233D4D] rounded-full font-bold shadow-lg hover:bg-[#EAECF0] transition-colors cursor-pointer"
+      <motion.div
+        className="inline-block"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        Get in Touch
-      </motion.button>
+        <Button
+          size="lg"
+          onClick={() => {
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+              const offset = 96;
+              const y = contactSection.getBoundingClientRect().top + window.pageYOffset - offset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }}
+          className="bg-[#FFFFFF] text-[#233D4D] font-bold shadow-lg hover:bg-[#EAECF0] hover:opacity-100"
+        >
+          Get in Touch
+        </Button>
+      </motion.div>
       
       {/* Floating particles - render only on client */}
       {particles && particles.map((particle) => (

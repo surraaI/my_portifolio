@@ -20,6 +20,26 @@
   /* Elevation */
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
   --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.12), 0 16px 40px rgba(0, 0, 0, 0.15);
+
+  /* shadcn/ui tokens, mapped onto the brand palette above (not shadcn's defaults) */
+  --radius: 0.75rem;
+  --card: var(--color-surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--foreground);
+  --primary: #233D4D;
+  --primary-foreground: #EAECF0;
+  --secondary: #E5E7EB;
+  --secondary-foreground: #000000;
+  --muted: #E5E7EB;
+  --muted-foreground: #4B5563;
+  --accent: #FE7F2D;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: var(--color-surface-border);
+  --input: var(--color-surface-border);
+  --ring: #FE7F2D;
 }
 
 @theme inline {
@@ -28,6 +48,29 @@
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
 }
 
 .dark {
@@ -42,6 +85,24 @@
 
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
   --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.5), 0 16px 40px rgba(0, 0, 0, 0.6);
+
+  --card: var(--color-surface);
+  --card-foreground: var(--foreground);
+  --popover: var(--color-surface);
+  --popover-foreground: var(--foreground);
+  --primary: #EAECF0;
+  --primary-foreground: #000000;
+  --secondary: #1F2937;
+  --secondary-foreground: #EAECF0;
+  --muted: #1F2937;
+  --muted-foreground: #9CA3AF;
+  --accent: #FE7F2D;
+  --accent-foreground: #000000;
+  --destructive: #F87171;
+  --destructive-foreground: #000000;
+  --border: var(--color-surface-border);
+  --input: var(--color-surface-border);
+  --ring: #FE7F2D;
 }
 
 html {

@@ -1,33 +1,34 @@
-import { motion } from "framer-motion";
 import { Category } from "@/data/projects";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
-const ProjectFilter = ({ 
-  categories, 
-  activeCategory, 
-  setActiveCategory 
-}: { 
+const ProjectFilter = ({
+  categories,
+  activeCategory,
+  setActiveCategory
+}: {
   categories: Category[];
   activeCategory: string;
   setActiveCategory: (id: string) => void;
 }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-3 mb-12">
+    <ToggleGroup
+      type="single"
+      value={activeCategory}
+      onValueChange={(value) => {
+        if (value) setActiveCategory(value);
+      }}
+      className="mb-12"
+    >
       {categories.map((category) => (
-        <motion.button
+        <ToggleGroupItem
           key={category.id}
-          className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-            activeCategory === category.id
-              ? "bg-brand-gradient text-white"
-              : "bg-[#EAECF0] text-[#000000] hover:bg-[#233D4D] dark:bg-[#000000] dark:text-[#EAECF0] dark:hover:bg-[#233D4D]"
-          }`}
-          onClick={() => setActiveCategory(category.id)}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          value={category.id}
+          className="px-4 py-2 text-sm font-medium data-[state=off]:bg-[#EAECF0] data-[state=off]:text-[#000000] data-[state=off]:hover:bg-[#233D4D]/20 dark:data-[state=off]:bg-[#000000] dark:data-[state=off]:text-[#EAECF0] dark:data-[state=off]:hover:bg-[#233D4D]"
         >
           {category.name}
-        </motion.button>
+        </ToggleGroupItem>
       ))}
-    </div>
+    </ToggleGroup>
   );
 };
 
