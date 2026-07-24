@@ -114,6 +114,18 @@ export default function ExpertiseSection() {
               level="Advanced"
               description="Real-time bidirectional communication for live features"
             />
+            <SkillCard
+              icon={<Icons.docker />}
+              name="Docker"
+              level="Intermediate"
+              description="Containerizing services for consistent local and deployed environments"
+            />
+            <SkillCard
+              icon={<Icons.github />}
+              name="GitHub"
+              level="Advanced"
+              description="Version control, code review, and CI/CD workflows"
+            />
           </div>
         </Reveal>
       </div>

@@ -5,7 +5,6 @@ import Image from 'next/image';
 import EducationCard from '@/components/EducationCard';
 import { Icons } from '@/utils/icons';
 import Reveal from '@/components/Reveal';
-import Workspace3D from '@/components/three/Workspace3D';
 
 export default function AboutSection() {
   return (
@@ -19,10 +18,6 @@ export default function AboutSection() {
               <p className="text-xl text-[#000000] dark:text-[#EAECF0] max-w-2xl mx-auto">
                 Backend & Full-Stack Developer | A2SV Graduate | 900+ LeetCode Problems
               </p>
-            </Reveal>
-
-            <Reveal className="mb-16" delay={0.05}>
-              <Workspace3D />
             </Reveal>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
