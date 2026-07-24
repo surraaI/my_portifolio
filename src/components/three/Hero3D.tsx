@@ -1,58 +1,48 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import FloatingParticles from "@/components/FloatingParticles";
+import { useCanRender3D } from "@/hooks/useCanRender3D";
 
 const HeroScene = dynamic(() => import("./HeroScene"), {
   ssr: false,
   loading: () => null,
 });
 
-const hasWebGL = () => {
-  try {
-    const canvas = document.createElement("canvas");
-    return !!(
-      window.WebGLRenderingContext &&
-      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-    );
-  } catch {
-    return false;
-  }
-};
-
 /**
- * Renders the 3D hero scene when the device/preferences support it;
- * otherwise falls back to the lightweight CSS particle field so there's
- * never a broken canvas or unnecessary GPU cost on low-power devices.
+ * Renders the interactive 3D laptop when the device/preferences support it;
+ * otherwise falls back to a static render of the same laptop so the hero
+ * still reads as "laptop" even without WebGL, with the particle field kept
+ * as an always-present ambient background layer either way.
  */
 const Hero3D = () => {
-  const [mode, setMode] = useState<"loading" | "3d" | "particles">("loading");
+  const mode = useCanRender3D();
 
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const isNarrowViewport = window.innerWidth < 640;
-
-    setMode(prefersReducedMotion || isNarrowViewport || !hasWebGL() ? "particles" : "3d");
-  }, []);
-
-  if (mode === "3d") {
-    return (
-      <>
-        <FloatingParticles />
-        <div
-          className="hidden md:block absolute right-[2%] lg:right-[8%] top-1/2 -translate-y-1/2 w-[420px] h-[420px] lg:w-[480px] lg:h-[480px] z-0 pointer-events-none opacity-80"
-          aria-hidden
-        >
-          <HeroScene />
-        </div>
-      </>
-    );
-  }
-
-  return <FloatingParticles />;
+  return (
+    <>
+      <FloatingParticles />
+      <div
+        className={`hidden md:block absolute right-[4%] lg:right-[10%] bottom-2 w-[300px] h-[300px] lg:w-[360px] lg:h-[360px] z-0 ${
+          mode === "3d" ? "" : "pointer-events-none"
+        }`}
+        aria-hidden
+      >
+        {mode === "3d" && <HeroScene />}
+        {mode === "fallback" && (
+          <div className="relative w-full h-full opacity-90">
+            <Image
+              src="/images/laptop-fallback.png"
+              alt=""
+              fill
+              className="object-contain"
+              sizes="420px"
+            />
+          </div>
+        )}
+      </div>
+    </>
+  );
 };
 
 export default Hero3D;
