@@ -14,7 +14,7 @@ import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import ContactSection from "@/components/sections/ContactSection";
 import FloatingCTA from "@/components/FloatingCTA";
 import Reveal from "@/components/Reveal";
-import Hero3D from "@/components/three/Hero3D";
+import FloatingParticles from "@/components/FloatingParticles";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -37,8 +37,8 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#233D4D]/5 to-[#000000]/5 dark:from-[#233D4D]/10 dark:to-[#000000]/10"></div>
         </motion.div>
         
-        {/* 3D hero scene - falls back to lightweight particles on low-power/mobile devices */}
-        <Hero3D />
+        {/* Ambient particle background */}
+        <FloatingParticles />
         
         <div className="max-w-6xl mx-auto px-4 z-10 w-full">
           <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
