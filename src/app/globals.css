@@ -2,58 +2,72 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Design tokens
+ * Palette: Paper #EAECF0, Ink #0E1B23, Teal #233D4D, Night #070D11, Signal #FE7F2D.
+ * Signal is the only accent. Where it is used as text on Paper it switches to
+ * --accent-text, a darker orange that meets WCAG AA.
+ */
 :root {
   --background: #EAECF0;
-  --foreground: #000000;
+  --foreground: #0E1B23;
 
-  /* Brand identity */
-  --color-brand-from: #233D4D;
-  --color-brand-to: #000000;
-  --color-brand-accent: #FE7F2D;
-  --card-hover-rgb: 35, 61, 77;
-
-  /* Surfaces */
-  --color-surface: #EAECF0;
-  --color-surface-elevated: #FFFFFF;
-  --color-surface-border: #233D4D;
-
-  /* Elevation */
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.08), 0 8px 24px rgba(0, 0, 0, 0.06);
-  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.12), 0 16px 40px rgba(0, 0, 0, 0.15);
-
-  /* shadcn/ui tokens, mapped onto the brand palette above (not shadcn's defaults) */
-  --radius: 0.75rem;
-  --card: var(--color-surface);
+  --card: #FFFFFF;
   --card-foreground: var(--foreground);
-  --popover: var(--color-surface);
+  --popover: #FFFFFF;
   --popover-foreground: var(--foreground);
+
   --primary: #233D4D;
-  --primary-foreground: #EAECF0;
-  --secondary: #E5E7EB;
-  --secondary-foreground: #000000;
-  --muted: #E5E7EB;
-  --muted-foreground: #4B5563;
+  --primary-foreground: #F4F6F8;
+  --secondary: #DFE3E8;
+  --secondary-foreground: var(--foreground);
+  --muted: #DFE3E8;
+  --muted-foreground: #4A5B66;
+
   --accent: #FE7F2D;
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC2626;
+  --accent-foreground: #101A20;
+  --accent-text: #A34708;
+
+  --destructive: #B42318;
   --destructive-foreground: #FFFFFF;
-  --border: var(--color-surface-border);
-  --input: var(--color-surface-border);
+
+  --border: rgba(14, 27, 35, 0.12);
+  --input: rgba(14, 27, 35, 0.2);
   --ring: #FE7F2D;
+
+  --radius: 0.75rem;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  /* Font stacks; --font-body and --font-display-face are set by next/font in layout.tsx */
+  --stack-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --stack-display: var(--font-display-face), ui-serif, Georgia, serif;
+}
+
+.dark {
+  --background: #070D11;
+  --foreground: #E6EAEE;
+
+  --card: #0E171D;
+  --popover: #0E171D;
+
+  --primary: #E6EAEE;
+  --primary-foreground: #070D11;
+  --secondary: #15222B;
+  --muted: #15222B;
+  --muted-foreground: #93A1AB;
+
+  --accent-text: #FE7F2D;
+
+  --destructive: #F97066;
+  --destructive-foreground: #070D11;
+
+  --border: rgba(230, 234, 238, 0.1);
+  --input: rgba(230, 234, 238, 0.18);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-space-grotesk);
-  --font-mono: var(--font-geist-mono);
-
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
@@ -66,47 +80,29 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-accent-text: var(--accent-text);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-}
 
-.dark {
-  --background: #000000;
-  --foreground: #EAECF0;
+  --font-sans: var(--stack-sans);
+  --font-display: var(--stack-display);
 
-  --card-hover-rgb: 254, 127, 45;
-
-  --color-surface: #233D4D;
-  --color-surface-elevated: #000000;
-  --color-surface-border: #233D4D;
-
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-card-hover: 0 4px 8px rgba(0, 0, 0, 0.5), 0 16px 40px rgba(0, 0, 0, 0.6);
-
-  --card: var(--color-surface);
-  --card-foreground: var(--foreground);
-  --popover: var(--color-surface);
-  --popover-foreground: var(--foreground);
-  --primary: #EAECF0;
-  --primary-foreground: #000000;
-  --secondary: #1F2937;
-  --secondary-foreground: #EAECF0;
-  --muted: #1F2937;
-  --muted-foreground: #9CA3AF;
-  --accent: #FE7F2D;
-  --accent-foreground: #000000;
-  --destructive: #F87171;
-  --destructive-foreground: #000000;
-  --border: var(--color-surface-border);
-  --input: var(--color-surface-border);
-  --ring: #FE7F2D;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
@@ -114,30 +110,127 @@ body {
   color: var(--foreground);
 }
 
-.bg-brand-gradient {
-  background-image: linear-gradient(to right, var(--color-brand-from), var(--color-brand-to));
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 
-.text-brand-gradient {
-  background-image: linear-gradient(to right, var(--color-brand-from), var(--color-brand-to));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+p {
+  text-wrap: pretty;
 }
 
-.bg-surface-card {
-  background-color: var(--color-surface);
-  border-color: var(--color-surface-border);
+::selection {
+  background: var(--accent);
+  color: var(--accent-foreground);
 }
 
-.bg-surface-elevated {
-  background-color: var(--color-surface-elevated);
-  border-color: var(--color-surface-border);
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body.custom-cursor-active,
-  body.custom-cursor-active * {
-    cursor: none !important;
+/* Display type: serif, tight, slightly condensed tracking */
+.display {
+  font-family: var(--stack-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+}
+
+/* Underline that grows from the left on hover */
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 300ms var(--ease-out), color 200ms ease;
+}
+
+.link-underline:hover,
+.link-underline:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Hero load sequence: text rises in, staggered by --rise-delay */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 500ms var(--ease-out) both;
+  animation-delay: var(--rise-delay, 0ms);
+}
+
+/* Hero route draws itself once, then the courier sets off */
+@keyframes route-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.route-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: route-draw 1400ms 300ms cubic-bezier(0.6, 0, 0.2, 1) forwards;
+}
+
+/* On wide screens the hero map bleeds off the right edge and fades into the page */
+@media (min-width: 1024px) {
+  .hero-map-fade {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 40%),
+      linear-gradient(to bottom, #000 70%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(to right, transparent 0%, #000 40%),
+      linear-gradient(to bottom, #000 70%, transparent 100%);
+    mask-composite: intersect;
+  }
+}
+
+/* Scroll reveal, toggled by the Reveal component */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 400ms ease-out, transform 400ms var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.reveal[data-visible="true"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .rise,
+  .route-draw {
+    animation: none;
+  }
+
+  .route-draw {
+    stroke-dashoffset: 0;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }

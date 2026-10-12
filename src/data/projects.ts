@@ -18,6 +18,22 @@ export type Project = {
   metrics?: string[];
   /** Client/agency work with no public repository. */
   isClientProject?: boolean;
+  /** Present on the projects shown as full case studies on the home page. */
+  caseStudy?: CaseStudy;
+};
+
+export type ArchitectureLayer = {
+  name: string;
+  nodes: { label: string; note?: string }[];
+};
+
+export type CaseStudy = {
+  period?: string;
+  problem: string;
+  myRole: string;
+  results: string[];
+  /** Top-to-bottom layers of the system, drawn as an architecture diagram. */
+  architecture: ArchitectureLayer[];
 };
 
 export type Category = {
@@ -27,66 +43,191 @@ export type Category = {
 
 export const projects: Project[] = [
   {
+    id: "yeneb-cods",
+    title: "Yeneb",
+    description: "Multi-vertical delivery super-app, built from scratch as its sole engineer",
+    longDescription: "Yeneb's delivery super-app platform, designed and built from scratch as CTO and sole engineer. A FastAPI backend with 200+ endpoints on PostgreSQL, PostGIS, Redis, and WebSockets covers real-time order and courier tracking, geospatial courier matching, integrated online payments, and a courier wallet that settles cash-on-delivery orders. Three Flutter apps (customer, courier, supplier) and a Next.js web platform sit on top, with CI/CD on Docker and GitHub Actions. The platform is preparing for launch.",
+    category: "fullstack",
+    technologies: ["FastAPI", "PostgreSQL", "PostGIS", "Redis", "Flutter", "Next.js", "Docker"],
+    imageUrl: "/images/projects/yeneb.png",
+    featured: true,
+    role: "CTO",
+    metrics: [
+      "200+ API endpoints",
+      "3 Flutter apps + Next.js web",
+      "Real-time courier tracking",
+    ],
+    features: [
+      "Real-time order and courier tracking over WebSockets",
+      "Geospatial courier matching with PostGIS",
+      "Integrated online payments, with cash on delivery as an option",
+      "Courier wallet that settles cash-on-delivery orders",
+      "Customer, courier, and supplier Flutter apps with multi-language support",
+      "Next.js web platform for ordering, supplier management, and administration",
+      "CI/CD with Docker and GitHub Actions",
+    ],
+    caseStudy: {
+      period: "May 2026 – present",
+      problem:
+        "Build Yeneb's delivery platform from scratch: one system that tracks couriers in real time, matches them by location, and takes payment online or in cash on delivery.",
+      myRole:
+        "CTO and sole engineer. I proposed building the platform from scratch to company leadership and own architecture, backend, database, web, mobile, infrastructure, and technical product decisions.",
+      results: [
+        "200+ API endpoints on one FastAPI backend",
+        "Three Flutter apps and a Next.js web platform, built solo",
+        "CI/CD on Docker and GitHub Actions; the platform is preparing for launch",
+      ],
+      architecture: [
+        {
+          name: "Clients",
+          nodes: [
+            { label: "Customer app", note: "Flutter" },
+            { label: "Courier app", note: "Flutter" },
+            { label: "Supplier app", note: "Flutter" },
+            { label: "Web platform", note: "Next.js" },
+          ],
+        },
+        {
+          name: "API",
+          nodes: [
+            { label: "FastAPI", note: "REST, 200+ endpoints" },
+            { label: "WebSockets", note: "Order and courier tracking" },
+            { label: "Payments", note: "Online and cash on delivery" },
+            { label: "Courier wallet", note: "Settles cash orders" },
+          ],
+        },
+        {
+          name: "Data",
+          nodes: [
+            { label: "PostgreSQL" },
+            { label: "PostGIS", note: "Geospatial courier matching" },
+            { label: "Redis" },
+          ],
+        },
+      ],
+    },
+  },
+  {
     id: "movemate",
     title: "MoveMate",
     description: "AI-powered public bus tracking system for Addis Ababa with ML-driven ETAs",
-    longDescription: "Graduation project and backend-team-lead effort: an AI-powered public bus tracking platform for Addis Ababa. Built the FastAPI + PostgreSQL backend and led a team delivering a Flutter client, with real-time GPS ingestion feeding a RandomForestRegressor ETA model trained on ~140K GPS records. Compressed the raw GPS dataset from 2.8GB to ~17MB for efficient training and deployment without sacrificing model accuracy.",
+    longDescription: "Graduation project at Addis Ababa University: an AI-powered public transport tracking platform for Addis Ababa. Led a team of five through task planning, code review, and delivery, and built the FastAPI + PostgreSQL backend behind a Flutter client. Real-time GPS ingestion feeds a RandomForestRegressor ETA model trained on 140,000+ GPS records (R² = 0.93, MAE ≈ 4.6 min), retrained nightly. The production model was compressed by 99%, from 2.8 GB to 17 MB, with no meaningful accuracy loss.",
     category: "fullstack",
     technologies: ["FastAPI", "Flutter", "PostgreSQL", "Python", "scikit-learn"],
     imageUrl: "",
     featured: true,
-    role: "Backend Team Lead",
+    role: "Team Lead & Backend Engineer",
     metrics: [
-      "R² = 0.93 ETA model",
-      "~140K GPS records trained",
-      "2.8GB → ~17MB dataset compression",
+      "R² = 0.93, MAE ≈ 4.6 min",
+      "140K+ GPS records trained",
+      "Model compressed 2.8 GB → 17 MB",
     ],
     features: [
       "Real-time GPS bus tracking",
       "RandomForestRegressor ETA predictions",
-      "Compressed GPS data pipeline",
+      "Demand-based rerouting module",
+      "Nightly APScheduler retraining pipeline",
       "FastAPI backend with PostgreSQL",
       "Flutter rider-facing app",
     ],
-  },
-  {
-    id: "yeneb-cods",
-    title: "YENEB CODS",
-    description: "Food and grocery delivery platform built for a client",
-    longDescription: "A food and grocery delivery platform built as a client project, covering ordering, delivery coordination, and a cross-platform customer experience. Backend built with FastAPI, web frontend with Next.js, and a Flutter mobile app for customers and riders.",
-    category: "fullstack",
-    technologies: ["FastAPI", "Next.js", "Flutter", "PostgreSQL"],
-    imageUrl: "",
-    isClientProject: true,
-    features: [
-      "Food and grocery ordering",
-      "Delivery coordination",
-      "Cross-platform customer app",
-      "Admin/vendor management",
-    ],
+    caseStudy: {
+      period: "Jun 2026",
+      problem:
+        "Give bus riders in Addis Ababa a live position for their bus and an arrival time they can trust.",
+      myRole:
+        "Team lead of five and backend engineer: task planning, code review, delivery, and the FastAPI backend and ETA model.",
+      results: [
+        "ETA model at R² = 0.93, MAE ≈ 4.6 min, trained on 140,000+ GPS records",
+        "Production model compressed by 99%, from 2.8 GB to 17 MB, with no meaningful accuracy loss",
+        "Nightly retraining and a demand-based rerouting module",
+      ],
+      architecture: [
+        {
+          name: "Clients",
+          nodes: [
+            { label: "Rider app", note: "Flutter" },
+            { label: "Bus GPS feed", note: "Real-time ingestion" },
+          ],
+        },
+        {
+          name: "API",
+          nodes: [
+            { label: "FastAPI" },
+            { label: "ETA model", note: "RandomForestRegressor" },
+            { label: "APScheduler", note: "Nightly retraining" },
+          ],
+        },
+        {
+          name: "Data",
+          nodes: [
+            { label: "PostgreSQL" },
+            { label: "GPS history", note: "140,000+ records" },
+          ],
+        },
+      ],
+    },
   },
   {
     id: "heallink",
     title: "HealLink",
     description: "Deployed healthcare appointment platform with multi-role RBAC",
-    longDescription: "A deployed healthcare appointment platform supporting patients, providers, and admins through multi-role role-based access control. Integrated Chapa for payments and Cloudinary for media handling, deployed on Render.",
+    longDescription: "A deployed healthcare appointment platform supporting patients, providers, and admins through multi-role role-based access control. Covers provider onboarding and diagnostic workflows, QR-based patient check-in with automated notifications, a two-tier government verification dashboard, and provider analytics. Integrated Chapa for payments and Cloudinary for secure medical document storage, deployed on Render.",
     category: "fullstack",
     technologies: ["Node.js", "Express", "MongoDB", "Chapa", "Cloudinary"],
     demoUrl: "https://heallink.onrender.com/",
-    imageUrl: "",
+    imageUrl: "/images/projects/heallink.png",
     features: [
       "Multi-role RBAC (patient/provider/admin)",
       "Appointment booking and scheduling",
+      "QR-based patient check-in with automated notifications",
+      "Two-tier government verification dashboard",
+      "Provider analytics on appointment trends and no-show rates",
       "Chapa payment integration",
-      "Cloudinary media management",
-      "Deployed on Render",
+      "Cloudinary document storage",
     ],
+    caseStudy: {
+      period: "Feb 2026",
+      problem:
+        "Let patients book and pay for appointments, and let providers get onboarded and verified, on one platform.",
+      myRole:
+        "Full-stack engineer and backend architect: the APIs, payments, document storage, and role-based access.",
+      results: [
+        "Deployed and live on Render",
+        "QR-based patient check-in with automated notifications",
+        "Provider analytics on appointment trends, peak occupancy, and no-show rates",
+      ],
+      architecture: [
+        {
+          name: "Clients",
+          nodes: [
+            { label: "Patients" },
+            { label: "Providers" },
+            { label: "Admins", note: "Two-tier verification" },
+          ],
+        },
+        {
+          name: "API",
+          nodes: [
+            { label: "Node.js + Express", note: "Asynchronous APIs" },
+            { label: "RBAC", note: "Patient, provider, admin" },
+          ],
+        },
+        {
+          name: "Data and services",
+          nodes: [
+            { label: "MongoDB" },
+            { label: "Chapa", note: "Payments" },
+            { label: "Cloudinary", note: "Medical documents" },
+          ],
+        },
+      ],
+    },
   },
   {
     id: "saddeeqa",
     title: "Saddeeqa",
     description: "Flutter implementation of a traditional Ethiopian board game with an AI opponent",
-    longDescription: "A Flutter mobile implementation of Saddeeqa, a traditional Ethiopian board game, featuring a single-player mode against an AI opponent built with Minimax and Alpha-Beta pruning for efficient move search.",
+    longDescription: "A Flutter mobile implementation of Saddeeqa, a traditional Ethiopian board game, featuring a single-player mode against an AI opponent built with Minimax and Alpha-Beta pruning, playable at multiple difficulty levels.",
     category: "mobile",
     technologies: ["Flutter", "Dart"],
     imageUrl: "",
@@ -163,7 +304,37 @@ export const projects: Project[] = [
       "Referral tracking system",
       "Real-time features via Socket.IO",
       "Coin reward system"
-    ]
+    ],
+    caseStudy: {
+      problem:
+        "Help YouTube creators grow their subscribers, and verify that each subscription actually happened.",
+      myRole:
+        "Backend developer: authentication, access control, real-time features, and the verification pipeline.",
+      results: [
+        "OCR-based subscription verification",
+        "Three-tier role-based access control on JWT",
+        "Real-time support chat, referral tracking, and a coin reward system",
+      ],
+      architecture: [
+        {
+          name: "Clients",
+          nodes: [{ label: "Web app", note: "React" }],
+        },
+        {
+          name: "API",
+          nodes: [
+            { label: "Node.js + Express" },
+            { label: "Socket.IO", note: "Support chat" },
+            { label: "JWT + RBAC", note: "Three tiers" },
+            { label: "OCR", note: "Subscription checks" },
+          ],
+        },
+        {
+          name: "Data",
+          nodes: [{ label: "MongoDB" }],
+        },
+      ],
+    },
   },
   {
     id: "ecommerce-app",

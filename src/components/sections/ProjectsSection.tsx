@@ -1,98 +1,143 @@
 // components/sections/ProjectsSection.tsx
-'use client';
-
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
-import ProjectCard from '@/components/ProjectCard';
-import ProjectFilter from '@/components/ProjectFilter';
+import ArchitectureDiagram from '@/components/ArchitectureDiagram';
 import Reveal from '@/components/Reveal';
-import { Button } from '@/components/ui/button';
-import { projects, categories } from '@/data/projects';
+import SectionHeading from '@/components/SectionHeading';
+import TechTag from '@/components/TechTag';
+import { Project, projects } from '@/data/projects';
 
-export default function ProjectsSection() {
-  const [activeCategory, setActiveCategory] = useState('all');
+const ArrowIcon = ({ className = '' }: { className?: string }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth={1.75} strokeLinecap="round" strokeLinejoin="round" className={`h-4 w-4 ${className}`} aria-hidden>
+    <path d="M6 14 14 6M7 6h7v7" />
+  </svg>
+);
 
-  const featuredProjects = projects.filter((project) => project.featured);
-
-  const filteredProjects = activeCategory === 'all'
-    ? projects
-    : projects.filter(project => project.category === activeCategory);
+const CaseStudy = ({ project, flipped }: { project: Project; flipped: boolean }) => {
+  const study = project.caseStudy;
+  if (!study) return null;
 
   return (
-    <section id="projects" className="scroll-mt-24 py-24 bg-[#EAECF0]/20 dark:bg-[#000000]">
-      <div className="max-w-6xl mx-auto px-4">
-        <Reveal className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold font-display text-brand-gradient mb-4">
-            My Projects
-          </h1>
-          <p className="text-xl text-[#000000] dark:text-[#EAECF0] max-w-2xl mx-auto">
-            Showcasing my technical solutions and creative implementations
-          </p>
-        </Reveal>
+    <article className="grid grid-cols-1 gap-10 border-t border-border py-16 md:py-24 lg:grid-cols-12 lg:gap-16">
+      <Reveal className={`lg:col-span-6 ${flipped ? 'lg:order-2' : ''}`}>
+        <p className="text-sm text-muted-foreground">
+          {[project.role, study.period].filter(Boolean).join(', ')}
+        </p>
+        <h3 className="display mt-3 text-4xl md:text-5xl text-foreground">{project.title}</h3>
+        <p className="mt-4 max-w-[52ch] text-lg leading-relaxed text-muted-foreground">
+          {project.description}
+        </p>
 
-        {featuredProjects.length > 0 && (
-          <Reveal className="mb-12" delay={0.1}>
-            <div className="grid grid-cols-1 gap-6">
-              {featuredProjects.map((project) => (
-                <Link key={project.id} href={`/projects/${project.id}`} className="block">
-                  <motion.div
-                    className="relative overflow-hidden rounded-2xl bg-brand-gradient p-8 md:p-10 shadow-xl"
-                    whileHover={{ y: -4 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <span className="inline-block mb-3 px-3 py-1 bg-white/20 text-white rounded-full text-xs font-semibold backdrop-blur-sm">
-                      Flagship Project{project.role ? ` · ${project.role}` : ''}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold font-display text-white mb-3">
-                      {project.title}
-                    </h3>
-                    <p className="text-white/90 max-w-2xl mb-6">{project.description}</p>
-                    {project.metrics && (
-                      <div className="flex flex-wrap gap-3 mb-2">
-                        {project.metrics.map((metric) => (
-                          <span
-                            key={metric}
-                            className="px-3 py-1.5 bg-white/15 text-white text-sm rounded-full backdrop-blur-sm"
-                          >
-                            {metric}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </motion.div>
-                </Link>
-              ))}
-            </div>
-          </Reveal>
+        <dl className="mt-10 space-y-8">
+          <div>
+            <dt className="text-sm font-medium text-accent-text">Problem</dt>
+            <dd className="mt-2 max-w-[62ch] leading-relaxed text-foreground">{study.problem}</dd>
+          </div>
+          <div>
+            <dt className="text-sm font-medium text-accent-text">My role</dt>
+            <dd className="mt-2 max-w-[62ch] leading-relaxed text-foreground">{study.myRole}</dd>
+          </div>
+          <div>
+            <dt className="text-sm font-medium text-accent-text">Result</dt>
+            <dd className="mt-2">
+              <ul className="space-y-2">
+                {study.results.map((result) => (
+                  <li key={result} className="flex max-w-[62ch] gap-3 leading-relaxed text-foreground">
+                    <span className="mt-[0.7em] h-1 w-1 shrink-0 rounded-full bg-accent" aria-hidden />
+                    {result}
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        </dl>
+
+        {(project.demoUrl || project.githubUrl) && (
+          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
+            {project.demoUrl && (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline inline-flex items-center gap-1.5 font-medium text-foreground"
+              >
+                Visit live site <ArrowIcon />
+              </a>
+            )}
+            {project.githubUrl && (
+              <a
+                href={project.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline inline-flex items-center gap-1.5 font-medium text-foreground"
+              >
+                View code <ArrowIcon />
+              </a>
+            )}
+          </div>
         )}
+      </Reveal>
 
-        <ProjectFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          setActiveCategory={setActiveCategory}
+      <Reveal className={`lg:col-span-6 ${flipped ? 'lg:order-1' : ''}`} delay={0.1}>
+        {project.imageUrl && (
+          <div className="relative mb-4 aspect-[2/1] overflow-hidden rounded-3xl border border-border bg-secondary">
+            <Image
+              src={project.imageUrl}
+              alt={`${project.title} home page`}
+              fill
+              // Screenshots hold small UI text: ask for twice the frame width and skip lossy compression
+              sizes="(min-width: 1024px) 1056px, 200vw"
+              quality={100}
+              className="object-cover object-left-top"
+            />
+          </div>
+        )}
+        <ArchitectureDiagram layers={study.architecture} title={project.title} />
+        <ul className="mt-5 flex flex-wrap gap-2" aria-label={`${project.title} stack`}>
+          {project.technologies.map((tech) => (
+            <li key={tech}>
+              <TechTag name={tech} />
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+    </article>
+  );
+};
+
+export default function ProjectsSection() {
+  const caseStudies = projects.filter((project) => project.caseStudy);
+  const otherProjects = projects.filter((project) => !project.caseStudy);
+
+  return (
+    <section id="work" className="scroll-mt-24 py-24 md:py-32">
+      <div className="mx-auto max-w-6xl px-5 md:px-8">
+        <SectionHeading
+          title="Selected work"
+          subtitle="Four systems I designed and built, with the problem, my role, and how each one is put together."
         />
 
-        {filteredProjects.length === 0 ? (
-          <div className="text-center py-12">
-            <h3 className="text-xl text-[#233D4D] dark:text-[#EAECF0]">No projects found in this category</h3>
-            <Button
-              variant="brand"
-              className="mt-4"
-              onClick={() => setActiveCategory('all')}
-            >
-              View All Projects
-            </Button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <Reveal key={project.id} delay={Math.min(index * 0.08, 0.32)}>
-                <ProjectCard project={project} />
-              </Reveal>
+        {caseStudies.map((project, index) => (
+          <CaseStudy key={project.id} project={project} flipped={index % 2 === 1} />
+        ))}
+
+        <Reveal className="border-t border-border pt-16 md:pt-24">
+          <h3 className="display text-3xl text-foreground">More projects</h3>
+          <ul className="mt-8">
+            {otherProjects.map((project) => (
+              <li key={project.id} className="border-b border-border first:border-t">
+                <Link
+                  href={`/projects/${project.id}`}
+                  className="group grid grid-cols-[1fr_auto] items-center gap-x-6 gap-y-1 py-5 transition-colors duration-200 hover:bg-foreground/[0.03] sm:grid-cols-[minmax(0,14rem)_1fr_auto] sm:px-3"
+                >
+                  <span className="font-medium text-foreground">{project.title}</span>
+                  <span className="col-start-1 text-muted-foreground sm:col-start-2">{project.description}</span>
+                  <ArrowIcon className="col-start-2 row-span-2 row-start-1 text-muted-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent-text sm:col-start-3 sm:row-span-1" />
+                </Link>
+              </li>
             ))}
-          </div>
-        )}
+          </ul>
+        </Reveal>
       </div>
     </section>
   );

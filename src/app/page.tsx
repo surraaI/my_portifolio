@@ -1,288 +1,71 @@
 // app/page.tsx
-'use client';
-
-import { motion } from "framer-motion";
-import {
-  HERO_CONTENT,
-  SOCIAL_LINKS,
-  STATS
-} from "@/utils/constants";
-import Image from "next/image";
+import type { CSSProperties } from "react";
+import { HERO_CONTENT } from "@/utils/constants";
 import AboutSection from "@/components/sections/AboutSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import ExpertiseSection from "@/components/sections/ExpertiseSection";
 import ContactSection from "@/components/sections/ContactSection";
-import FloatingCTA from "@/components/FloatingCTA";
-import Reveal from "@/components/Reveal";
-import FloatingParticles from "@/components/FloatingParticles";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import HeroTracker from "@/components/HeroTracker";
+
+const riseDelay = (ms: number) => ({ "--rise-delay": `${ms}ms` }) as CSSProperties;
 
 export default function Home() {
   return (
-    <div className="w-full">
-      {/* Hero Section - Full Screen */}
-      <section 
-        id="hero" 
-        className="h-screen w-full flex items-center justify-center relative overflow-hidden py-16 md:py-0"
-        style={{ minHeight: '100vh' }}
-      >
-        {/* Background Gradient */}
-        <motion.div 
-          className="absolute inset-0 z-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#233D4D]/5 to-[#000000]/5 dark:from-[#233D4D]/10 dark:to-[#000000]/10"></div>
-        </motion.div>
-        
-        {/* Ambient particle background */}
-        <FloatingParticles />
-        
-        <div className="max-w-6xl mx-auto px-4 z-10 w-full">
-          <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-8 md:gap-12">
-            {/* Text Content */}
-            <motion.div
-              className="text-center md:text-left"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+    <>
+      {/* Hero: the map bleeds off the right edge on wide screens and sits below the text on small ones */}
+      <section id="hero" className="relative overflow-hidden">
+        <div className="mx-auto flex max-w-6xl flex-col justify-center px-5 pb-16 pt-28 md:px-8 lg:min-h-[min(100svh,60rem)] lg:pb-24 lg:pt-24">
+          <div className="relative z-10 max-w-[40rem]">
+            <p
+              className="rise inline-flex items-center gap-2.5 rounded-full border border-border bg-background/70 px-3.5 py-1.5 text-sm text-foreground backdrop-blur"
+              style={riseDelay(0)}
             >
-              <motion.h1
-                className="text-4xl sm:text-5xl md:text-7xl font-bold font-display tracking-tight mb-4"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <span className="text-brand-gradient">
-                  {HERO_CONTENT.title}
-                </span>
-              </motion.h1>
-              
-              <motion.h2
-                className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-700 dark:text-gray-300 mb-6 md:mb-8"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
+              <span className="h-2 w-2 rounded-full bg-accent" aria-hidden />
+              {HERO_CONTENT.availability}
+            </p>
+
+            <h1 className="mt-8">
+              <span className="rise block text-lg font-medium text-muted-foreground" style={riseDelay(80)}>
+                {HERO_CONTENT.title}
+              </span>
+              <span
+                className="rise display mt-3 block text-[clamp(2.5rem,6.2vw,4.75rem)] text-foreground"
+                style={riseDelay(160)}
               >
                 {HERO_CONTENT.subtitle}
-              </motion.h2>
-              
-              <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6 mb-8 md:mb-0"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.0 }}
-              >
-                <motion.button
-                  onClick={() => {
-                    const projectsSection = document.getElementById('projects');
-                    if (projectsSection) {
-                      const offset = 96;
-                      const y = projectsSection.getBoundingClientRect().top + window.pageYOffset - offset;
-                      window.scrollTo({ top: y, behavior: 'smooth' });
-                    }
-                  }}
-                  className={cn(
-                    buttonVariants({ variant: "brand", size: "lg" }),
-                    "sm:px-8 sm:py-4 relative overflow-hidden group hover:opacity-100"
-                  )}
-                  whileHover={{ 
-                    scale: 1.05,
-                    background: "linear-gradient(45deg, #233D4D, #FE7F2D)"
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10 text-sm sm:text-base">{HERO_CONTENT.cta}</span>
-                  <motion.span 
-                    className="absolute inset-0 bg-gradient-to-r from-[#233D4D] to-[#FE7F2D] opacity-0 group-hover:opacity-100 transition-opacity"
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "100%" }}
-                    transition={{ 
-                      repeat: Infinity, 
-                      duration: 2,
-                      ease: "linear"
-                    }}
-                  />
-                </motion.button>
-                
-                <motion.div 
-                  className="flex items-center gap-3 sm:gap-4 md:gap-5"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  {SOCIAL_LINKS.map((link, index) => (
-                    <motion.a
-                      key={link.name}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm shadow-lg hover:shadow-xl transition-all relative group"
-                      whileHover={{ 
-                        y: -5,
-                        scale: 1.1,
-                        background: "linear-gradient(45deg, #233D4D, #FE7F2D)"
-                      }}
-                      whileTap={{ scale: 0.9 }}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 1.2 + index * 0.1 }}
-                    >
-                      <span className="sr-only">{link.name}</span>
-                      <span className="text-gray-800 dark:text-gray-200 group-hover:text-white transition-colors text-lg sm:text-xl">
-                        {link.icon}
-                      </span>
-                    </motion.a>
-                  ))}
-                </motion.div>
-              </motion.div>
-            </motion.div>
-            
-            {/* Profile Image - Responsive Sizing */}
-            <motion.div
-              className="relative mb-8 md:mb-0"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 100,
-                damping: 15,
-                delay: 0.2
-              }}
-              whileHover={{ 
-                rotateY: 5,
-                rotateX: 2,
-                scale: 1.02,
-              }}
+              </span>
+            </h1>
+
+            <p
+              className="rise mt-6 max-w-[56ch] text-lg leading-relaxed text-muted-foreground"
+              style={riseDelay(240)}
             >
-              <div className="relative">
-                <motion.div
-                  className="relative rounded-full w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-72 lg:h-72 overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Image
-                    src="/images/profile.jpg"
-                    alt="Sura Itana"
-                    fill
-                    sizes="(min-width: 1024px) 288px, (min-width: 768px) 256px, 224px"
-                    className="object-cover rounded-full"
-                    quality={100}
-                    priority
-                  />
-                </motion.div>
-                
-                {/* Floating Badge - Responsive Sizing */}
-                <motion.div
-                  className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 bg-white dark:bg-gray-800 rounded-full p-2 sm:p-3 shadow-lg"
-                  animate={{ 
-                    rotate: [0, 360],
-                    y: [0, -8, 0]
-                  }}
-                  transition={{ 
-                    repeat: Infinity, 
-                    duration: 8, 
-                    ease: "easeInOut",
-                    y: {
-                      repeat: Infinity,
-                      duration: 3,
-                      ease: "easeInOut",
-                    }
-                  }}
-                >
-                  <div className="bg-gradient-to-r from-[#233D4D] to-[#FE7F2D] text-white rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-lg sm:text-xl font-bold">
-                    SI
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+              {HERO_CONTENT.description}
+            </p>
+
+            <div className="rise mt-10 flex flex-wrap items-center gap-x-8 gap-y-4" style={riseDelay(320)}>
+              <a href="#contact" className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 text-base font-semibold text-accent-foreground transition duration-200 hover:brightness-105 active:scale-[0.98]">
+                {HERO_CONTENT.cta}
+              </a>
+              <a href="#work" className="link-underline font-medium text-foreground">
+                {HERO_CONTENT.secondaryCta}
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-map-fade relative mt-14 aspect-[4/3] w-full overflow-hidden rounded-3xl border border-border bg-card lg:absolute lg:inset-y-0 lg:right-0 lg:mt-0 lg:aspect-auto lg:w-[58%] lg:rounded-none lg:border-0 lg:bg-transparent">
+            <HeroTracker />
           </div>
         </div>
-        
-        {/* Scroll Indicator - Positioned Higher on Mobile */}
-        <motion.div 
-          className="absolute bottom-6 sm:bottom-10 left-1/2 transform -translate-x-1/2"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.8 }}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-6 h-10 sm:w-8 sm:h-14 rounded-full border-2 border-gray-400 dark:border-gray-600 flex justify-center p-1"
-          >
-            <motion.div 
-              className="w-2 h-2 bg-gray-500 dark:bg-gray-400 rounded-full"
-              animate={{ y: [0, 6] }}
-              transition={{ repeat: Infinity, duration: 1.5, repeatType: "reverse" }}
-            />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Rest of the content */}
-      <div className="max-w-6xl mx-auto px-4">
-        {/* Stats Section */}
-        <Reveal className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {STATS.map((stat, index) => (
-            <motion.div
-              key={index}
-              className="bg-surface-card border border-gray-200 dark:border-gray-800 p-6 rounded-2xl text-center relative overflow-hidden shadow-xl"
-              whileHover={{ y: -5 }}
-            >
-              <div className="text-3xl font-bold font-display text-gray-900 dark:text-white">{stat.value}</div>
-              <div className="text-gray-600 dark:text-gray-300 mt-1">{stat.label}</div>
-
-              {/* Animated background elements */}
-              <motion.div
-                className="absolute -top-10 -left-10 w-20 h-20 rounded-full bg-[#233D4D] opacity-10 blur-xl"
-                animate={{
-                  x: [0, 20, 0],
-                  y: [0, 20, 0],
-                }}
-                transition={{
-                  duration: 5 + index * 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-              <motion.div
-                className="absolute -bottom-10 -right-10 w-20 h-20 rounded-full bg-[#FE7F2D] opacity-10 blur-xl"
-                animate={{
-                  x: [0, -20, 0],
-                  y: [0, -20, 0],
-                }}
-                transition={{
-                  duration: 6 + index * 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </motion.div>
-          ))}
-        </Reveal>
-      </div>
-
-      {/* Projects Section */}
       <ProjectsSection />
 
-      {/* 3D Floating Call to Action */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <Reveal>
-          <FloatingCTA />
-        </Reveal>
-      </div>
-
-      {/* Expertise & Skills Section */}
       <ExpertiseSection />
 
-      {/* About Section */}
       <AboutSection />
 
-      {/* Contact Section */}
       <ContactSection />
-    </div>
+    </>
   );
 }

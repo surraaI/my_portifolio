@@ -51,7 +51,7 @@ function ToggleGroupItem({
           variant: context.variant || variant,
           size: context.size || size,
         }),
-        "data-[state=on]:bg-brand-gradient data-[state=on]:text-white",
+        "data-[state=on]:bg-primary data-[state=on]:text-primary-foreground",
         className
       )}
       {...props}

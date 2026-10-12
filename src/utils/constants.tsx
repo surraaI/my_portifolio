@@ -30,28 +30,86 @@ export const SOCIAL_LINKS = [
 
 export const HERO_CONTENT = {
   title: "Sura Itana",
-  subtitle: "Full-Stack Developer & Problem Solver",
-  description: "I build scalable web applications and solve complex challenges with clean, efficient code.",
-  cta: "Explore my work",
+  subtitle: "Software engineer who designs, builds, and ships complete products.",
+  description:
+    "I'm CTO at Yeneb, where I own a delivery super-app end to end as its sole engineer: product decisions, backend, database, web, mobile, and infrastructure.",
+  availability: "Open to remote backend, full-stack, and product roles",
+  cta: "Get in touch",
+  secondaryCta: "See selected work",
 };
 
-export const EXPERTISE = [
-  {
-    title: "Backend Development",
-    description: "Building scalable APIs and server-side systems with Node.js, Python, and modern frameworks."
-  },
-  {
-    title: "Frontend Engineering",
-    description: "Creating responsive and interactive UIs with React, Next.js, and modern CSS frameworks."
-  },
-  {
-    title: "Competitive Programming",
-    description: "Solving complex algorithmic challenges with efficient data structures and optimized solutions."
-  }
-];
+export const CONTACT = {
+  email: "suraitana@gmail.com",
+  github: "https://github.com/surraaI",
+  linkedin: "https://www.linkedin.com/in/surraa-i/",
+};
 
 export const STATS = [
-  { value: "900+", label: "LeetCode Problems" },
-  { value: "10+", label: "Projects Built" },
-  { value: "2", label: "Years Experience" },
+  { value: "900+", label: "LeetCode and Codeforces problems solved" },
+  { value: "200+", label: "API endpoints built for Yeneb's platform" },
+  { value: "0.93", label: "R² on MoveMate's bus ETA model" },
+];
+
+export const EXPERIENCE = [
+  {
+    role: "Chief Technology Officer",
+    company: "Yeneb",
+    period: "May 2026 – Present",
+    location: "Addis Ababa, Ethiopia",
+    points: [
+      "Sole engineer building Yeneb's super-app platform from scratch, after proposing the build to company leadership.",
+      "Designed and built a FastAPI backend with 200+ endpoints on PostgreSQL, PostGIS, Redis, and WebSockets: real-time order and courier tracking, geospatial courier matching, integrated online payments, and a courier wallet that settles cash-on-delivery orders.",
+      "Built three Flutter apps (customer, courier, supplier) with multi-language support, plus a Next.js web platform for ordering, supplier management, and administration.",
+      "Set up CI/CD and deployment with Docker and GitHub Actions. The platform is preparing for launch.",
+    ],
+  },
+  {
+    role: "Full-Stack Engineer & Backend Architect",
+    company: "HealLink",
+    period: "Feb 2026",
+    location: "Addis Ababa, Ethiopia",
+    points: [
+      "Built asynchronous APIs for a healthcare platform covering provider onboarding and diagnostic workflows.",
+      "Integrated the Chapa payment gateway and Cloudinary for secure medical document storage.",
+      "Implemented QR-based patient check-in with automated notifications, a two-tier government verification dashboard, and provider analytics on appointment trends and no-show rates.",
+    ],
+  },
+  {
+    role: "Team Lead & Backend Engineer",
+    company: "MoveMate (graduation project)",
+    period: "Jun 2026",
+    location: "Addis Ababa University",
+    points: [
+      "Led a team of five building an AI-powered public transport tracking system for Addis Ababa: task planning, code review, and delivery.",
+      "Trained a RandomForestRegressor on 140,000+ GPS records for ETA prediction (R² = 0.93, MAE ≈ 4.6 min).",
+      "Designed a demand-based rerouting module and a nightly retraining pipeline, and compressed the production model by 99% (2.8 GB → 17 MB) with no meaningful accuracy loss.",
+    ],
+  },
+  {
+    role: "Full-Stack Developer",
+    company: "Mo-Creatives (freelance)",
+    period: "2023",
+    location: "",
+    points: [
+      "Delivered a portfolio website with a custom CMS and Next.js frontend for a client.",
+      "Implemented secure admin workflows and role-based content management.",
+    ],
+  },
+];
+
+export const SKILL_GROUPS = [
+  {
+    label: "Backend",
+    items: ["FastAPI", "Node.js", "Express", "NestJS", "REST API design", "WebSockets / Socket.IO", "Celery", "JWT / OTP auth", "RBAC"],
+  },
+  { label: "Databases", items: ["PostgreSQL", "PostGIS", "Redis", "MySQL", "MongoDB", "SQLAlchemy 2.0"] },
+  { label: "Languages", items: ["Python", "TypeScript", "JavaScript", "Dart", "SQL"] },
+  { label: "Frontend", items: ["React", "Next.js", "Flutter", "BLoC"] },
+  { label: "Tools & practices", items: ["Git / GitHub", "GitHub Actions", "Docker", "Sentry", "TDD", "Clean Architecture"] },
+];
+
+export const EDUCATION = [
+  { title: "BSc, Software Engineering", institution: "Addis Ababa University", period: "Jun 2026" },
+  { title: "A2SV Program", institution: "Africa to Silicon Valley, a Google-backed program", period: "Graduate" },
+  { title: "Full Stack Development", institution: "The Odin Project", period: "Aug 2023 – Oct 2024" },
 ];

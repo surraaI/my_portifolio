@@ -1,15 +1,16 @@
 // components/Header.tsx
 'use client';
 
-import { motion } from "framer-motion";
+import Link from "next/link";
 import { useEffect, useState } from "react";
-import { useTheme } from "@/context/ThemeContext";
 import DarkModeToggle from "./DarkModeToggle";
 
+const NAV_ITEMS = ["work", "skills", "about", "contact"];
+
 const Header = () => {
-  const { theme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
-  const bgColor = theme === "dark" ? "rgba(0, 0, 0, 0.8)" : "rgba(234, 236, 240, 0.8)";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -18,61 +19,96 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleScrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 96; // Adjust based on header height
-      const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  };
+  // Highlight the nav item for whichever section sits in the middle band of the viewport
+  useEffect(() => {
+    const sections = NAV_ITEMS
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const visible = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        });
+        setActiveSection(NAV_ITEMS.find((id) => visible.has(id)) ?? null);
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.header
-      className={`fixed top-0 w-full z-50 py-4 backdrop-blur-md border-b transition-shadow ${
-        scrolled
-          ? "border-[#233D4D] dark:border-[#233D4D] shadow-sm"
-          : "border-transparent"
+    <header
+      className={`fixed top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md transition-colors duration-300 ${
+        scrolled || menuOpen ? "border-border" : "border-transparent"
       }`}
-      style={{ backgroundColor: bgColor }}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, type: "spring", stiffness: 100 }}
     >
-      <div className="container mx-auto px-4 flex justify-between items-center relative">
-        <div
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="text-xl font-bold font-display text-brand-gradient cursor-pointer"
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 md:px-8">
+        <Link
+          href="/"
+          className="display text-xl text-foreground"
+          onClick={() => setMenuOpen(false)}
         >
           Sura Itana
-        </div>
+        </Link>
 
-        <nav className="hidden md:flex space-x-8">
-          {["projects", "expertise", "about", "contact"].map((item, i) => (
-            <motion.div
+        <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
+          {NAV_ITEMS.map((item) => (
+            <Link
               key={item}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
+              href={`/#${item}`}
+              aria-current={activeSection === item ? "true" : undefined}
+              className={`rounded-full px-4 py-2 text-sm font-medium capitalize transition-colors duration-200 ${
+                activeSection === item
+                  ? "bg-foreground/[0.08] text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
             >
-              <button
-                onClick={() => handleScrollTo(item)}
-                className="capitalize text-[#000000] dark:text-[#EAECF0] hover:text-[#FE7F2D] dark:hover:text-[#FE7F2D] transition-colors font-medium relative group"
-              >
-                {item}
-                <motion.span
-                  className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FE7F2D] group-hover:w-full transition-all duration-300"
-                  initial={{ width: 0 }}
-                  whileHover={{ width: "100%" }}
-                />
-              </button>
-            </motion.div>
+              {item}
+            </Link>
           ))}
         </nav>
 
-        <DarkModeToggle />
+        <div className="flex items-center gap-2">
+          <DarkModeToggle />
+          <button
+            type="button"
+            className="flex h-10 w-10 items-center justify-center rounded-full text-foreground md:hidden"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75} aria-hidden>
+              {menuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 8h16M4 16h16" />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
-    </motion.header>
+
+      {menuOpen && (
+        <nav id="mobile-nav" aria-label="Primary" className="flex flex-col border-t border-border px-5 py-3 md:hidden">
+          {NAV_ITEMS.map((item) => (
+            <Link
+              key={item}
+              href={`/#${item}`}
+              className="display py-3 text-2xl capitalize text-foreground"
+              onClick={() => setMenuOpen(false)}
+            >
+              {item}
+            </Link>
+          ))}
+        </nav>
+      )}
+    </header>
   );
 };
 

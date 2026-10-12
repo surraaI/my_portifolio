@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { Project } from "@/data/projects";
 import TechTag from "./TechTag";
 
@@ -22,100 +15,57 @@ const getInitials = (title: string) =>
     .toUpperCase();
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  const [hovered, setHovered] = useState(false);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } = e.currentTarget.getBoundingClientRect();
-    mouseX.set(e.clientX - left);
-    mouseY.set(e.clientY - top);
-    void width;
-    void height;
-  };
-
-  const rotateX = useTransform(mouseY, [0, 260], [6, -6]);
-  const rotateY = useTransform(mouseX, [0, 300], [-6, 6]);
-  const spotlight = useMotionTemplate`radial-gradient(240px circle at ${mouseX}px ${mouseY}px, rgba(var(--card-hover-rgb), 0.12), transparent 80%)`;
-
   return (
-    <motion.div
-      className="group relative bg-surface-card dark:bg-surface-card rounded-2xl overflow-hidden border border-[#233D4D] dark:border-[#233D4D] transition-shadow"
-      style={{
-        transformStyle: "preserve-3d",
-        rotateX,
-        rotateY,
-        boxShadow: hovered ? "var(--shadow-card-hover)" : "var(--shadow-card)",
-      }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      whileHover={{ y: -6 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-    >
-      {/* Spotlight overlay */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none z-10"
-        style={{ background: spotlight, opacity: hovered ? 1 : 0, transition: "opacity 0.3s ease" }}
-      />
-
+    <div className="group h-full flex flex-col bg-card rounded-2xl overflow-hidden border border-border shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-card-hover)] hover:border-[#FE7F2D]/50 hover:-translate-y-1 transition duration-300">
       {/* Project image / placeholder */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-44 overflow-hidden">
         {project.imageUrl ? (
           <Image
             src={project.imageUrl}
             alt={project.title}
             fill
             sizes="(min-width: 1024px) 384px, (min-width: 768px) 50vw, 100vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-110"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         ) : (
-          <div className="bg-brand-gradient h-full w-full flex items-center justify-center transition-transform duration-500 group-hover:scale-110">
+          <div className="bg-brand-gradient h-full w-full flex items-center justify-center">
             <span className="text-white/90 text-4xl font-display font-bold tracking-wide">
               {getInitials(project.title)}
             </span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/50 via-transparent to-transparent" />
-        {project.featured && (
-          <span className="absolute top-3 left-3 px-2.5 py-1 rounded-full text-xs font-semibold bg-[#FFFFFF]/90 dark:bg-[#000000]/90 text-brand-gradient">
-            Flagship Project
-          </span>
-        )}
       </div>
 
       {/* Project info */}
-      <div className="p-6">
-        <div className="flex justify-between items-start mb-3 gap-3">
-          <h3 className="text-xl font-bold font-display text-[#000000] dark:text-[#EAECF0]">
-            {project.title}
-          </h3>
-          <span className="shrink-0 px-2 py-1 bg-[#233D4D]/10 text-[#233D4D] dark:bg-[#233D4D]/20 dark:text-[#EAECF0] rounded-full text-xs">
-            {project.category.charAt(0).toUpperCase() + project.category.slice(1)}
-          </span>
-        </div>
+      <div className="p-6 flex flex-col flex-1">
+        <p className="text-sm capitalize text-muted-foreground mb-2">
+          {project.category === "fullstack" ? "Full stack" : project.category}
+        </p>
+        <h3 className="text-xl font-bold font-display text-foreground mb-2">
+          {project.title}
+        </h3>
 
-        <p className="text-[#000000] dark:text-[#EAECF0] mb-4">{project.description}</p>
+        <p className="text-muted-foreground mb-4">{project.description}</p>
 
         {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-6">
           {project.technologies.slice(0, 3).map((tech, index) => (
             <TechTag key={index} name={tech} />
           ))}
           {project.technologies.length > 3 && (
-            <span className="text-xs text-[#233D4D] dark:text-[#EAECF0] bg-[#EAECF0]/20 dark:bg-[#233D4D]/20 px-2 py-1 rounded-full">
+            <span className="text-xs text-muted-foreground px-1 py-1">
               +{project.technologies.length - 3} more
             </span>
           )}
         </div>
 
         {/* Links */}
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex justify-between items-center mt-auto">
           <Link
             href={`/projects/${project.id}`}
-            className="text-[#233D4D] dark:text-[#EAECF0] hover:text-[#FE7F2D] dark:hover:text-[#FE7F2D] flex items-center group/link text-sm font-medium"
+            className="text-foreground hover:text-[#FE7F2D] flex items-center group/link text-sm font-medium transition-colors"
           >
-            View Details
+            View details
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 group-hover/link:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
@@ -123,14 +73,14 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
           <div className="flex items-center space-x-3">
             {project.isClientProject && !project.githubUrl && (
-              <span className="text-xs text-[#233D4D] dark:text-[#EAECF0]">Client Project</span>
+              <span className="text-xs text-muted-foreground">Client project</span>
             )}
             {project.githubUrl && (
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#233D4D] hover:text-[#000000] dark:text-[#EAECF0] dark:hover:text-[#FE7F2D] transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="GitHub repository"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
@@ -143,7 +93,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 href={project.demoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#233D4D] hover:text-[#000000] dark:text-[#EAECF0] dark:hover:text-[#FE7F2D] transition-colors"
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 aria-label="Live demo"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -155,7 +105,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -37,7 +36,7 @@ const ContactForm = () => {
         // Note: Google Apps Script may return opaque response due to CORS
         // We use no-cors mode and handle it gracefully
         try {
-          const response = await fetch(GOOGLE_SCRIPT_URL, {
+          await fetch(GOOGLE_SCRIPT_URL, {
             method: 'POST',
             mode: 'no-cors', // Use no-cors to avoid CORS issues with Google Apps Script
             headers: {
@@ -96,7 +95,7 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <Label htmlFor="name" className="text-[#000000] dark:text-[#EAECF0] mb-2">Name</Label>
+          <Label htmlFor="name" className="text-foreground mb-2">Name</Label>
           <Input
             type="text"
             id="name"
@@ -104,13 +103,13 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             required
-            className="bg-[#EAECF0]/20 dark:bg-[#233D4D] border-[#233D4D] text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0]/70 focus-visible:ring-[#FE7F2D]"
+            className="bg-background"
             placeholder="Your name"
           />
         </div>
 
         <div>
-          <Label htmlFor="email" className="text-[#000000] dark:text-[#EAECF0] mb-2">Email</Label>
+          <Label htmlFor="email" className="text-foreground mb-2">Email</Label>
           <Input
             type="email"
             id="email"
@@ -118,14 +117,14 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="bg-[#EAECF0]/20 dark:bg-[#233D4D] border-[#233D4D] text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0]/70 focus-visible:ring-[#FE7F2D]"
+            className="bg-background"
             placeholder="your.email@example.com"
           />
         </div>
       </div>
 
       <div>
-        <Label htmlFor="subject" className="text-[#000000] dark:text-[#EAECF0] mb-2">Subject</Label>
+        <Label htmlFor="subject" className="text-foreground mb-2">Subject</Label>
         <Input
           type="text"
           id="subject"
@@ -133,13 +132,13 @@ const ContactForm = () => {
           value={formData.subject}
           onChange={handleChange}
           required
-          className="bg-[#EAECF0]/20 dark:bg-[#233D4D] border-[#233D4D] text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0]/70 focus-visible:ring-[#FE7F2D]"
+          className="bg-background"
           placeholder="What's this about?"
         />
       </div>
 
       <div>
-        <Label htmlFor="message" className="text-[#000000] dark:text-[#EAECF0] mb-2">Message</Label>
+        <Label htmlFor="message" className="text-foreground mb-2">Message</Label>
         <Textarea
           id="message"
           name="message"
@@ -147,25 +146,23 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           rows={5}
-          className="bg-[#EAECF0]/20 dark:bg-[#233D4D] border-[#233D4D] text-[#000000] dark:text-[#EAECF0] placeholder:text-[#233D4D] dark:placeholder:text-[#EAECF0]/70 focus-visible:ring-[#FE7F2D]"
+          className="bg-background"
           placeholder="Your message here..."
         />
       </div>
 
-      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-        <Button
-          type="submit"
-          variant="brand"
-          size="lg"
-          disabled={isSubmitting}
-          className="w-full rounded-lg"
-        >
-          {isSubmitting ? "Sending..." : "Send Message"}
-        </Button>
-      </motion.div>
+      <Button
+        type="submit"
+        variant="brand"
+        size="lg"
+        disabled={isSubmitting}
+        className="w-full rounded-lg"
+      >
+        {isSubmitting ? "Sending..." : "Send Message"}
+      </Button>
 
       {submitMessage && (
-        <div className="mt-4 p-4 bg-[#233D4D]/10 text-[#233D4D] dark:bg-[#233D4D]/20 dark:text-[#EAECF0] rounded-lg">
+        <div className="mt-4 p-4 bg-secondary text-foreground rounded-lg">
           {submitMessage}
         </div>
       )}

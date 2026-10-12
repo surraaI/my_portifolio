@@ -17,13 +17,13 @@ const ProjectFilter = ({
       onValueChange={(value) => {
         if (value) setActiveCategory(value);
       }}
-      className="mb-12"
+      className="mb-10 justify-start gap-2"
     >
       {categories.map((category) => (
         <ToggleGroupItem
           key={category.id}
           value={category.id}
-          className="px-4 py-2 text-sm font-medium data-[state=off]:bg-[#EAECF0] data-[state=off]:text-[#000000] data-[state=off]:hover:bg-[#233D4D]/20 dark:data-[state=off]:bg-[#000000] dark:data-[state=off]:text-[#EAECF0] dark:data-[state=off]:hover:bg-[#233D4D]"
+          className="px-4 py-2 text-sm font-medium data-[state=off]:text-muted-foreground data-[state=off]:hover:text-foreground"
         >
           {category.name}
         </ToggleGroupItem>
