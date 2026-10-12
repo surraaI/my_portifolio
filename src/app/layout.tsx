@@ -19,10 +19,10 @@ const description =
   "Sura Itana is a software engineer and CTO at Yeneb who owns products end to end: FastAPI and Node.js backends on PostgreSQL and PostGIS, Next.js web apps, and Flutter mobile apps.";
 
 export const metadata: Metadata = {
-  // Set NEXT_PUBLIC_SITE_URL to the deployed origin so Open Graph image URLs are absolute
-  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
-    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-    : undefined,
+  // Makes Open Graph image URLs absolute; override with NEXT_PUBLIC_SITE_URL if the domain changes
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://my-portifolio-six-blush.vercel.app"
+  ),
   title: {
     default: title,
     template: "%s | Sura Itana",

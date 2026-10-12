@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import DarkModeToggle from "./DarkModeToggle";
+import { CONTACT } from "@/utils/constants";
 
 const NAV_ITEMS = ["work", "skills", "about", "contact"];
 
@@ -74,6 +75,13 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-2">
+          <a
+            href={CONTACT.cv}
+            download
+            className="hidden h-10 items-center rounded-full border border-border px-4 text-sm font-medium text-foreground transition-colors duration-200 hover:bg-secondary sm:inline-flex"
+          >
+            Download CV
+          </a>
           <DarkModeToggle />
           <button
             type="button"
@@ -106,6 +114,14 @@ const Header = () => {
               {item}
             </Link>
           ))}
+          <a
+            href={CONTACT.cv}
+            download
+            className="display py-3 text-2xl text-foreground sm:hidden"
+            onClick={() => setMenuOpen(false)}
+          >
+            Download CV
+          </a>
         </nav>
       )}
     </header>

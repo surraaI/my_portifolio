@@ -116,7 +116,7 @@ export const projects: Project[] = [
     technologies: ["FastAPI", "Flutter", "PostgreSQL", "Python", "scikit-learn"],
     imageUrl: "",
     featured: true,
-    role: "Team Lead & Backend Engineer",
+    role: "Team Lead and Backend Developer",
     metrics: [
       "R² = 0.93, MAE ≈ 4.6 min",
       "140K+ GPS records trained",
@@ -131,11 +131,11 @@ export const projects: Project[] = [
       "Flutter rider-facing app",
     ],
     caseStudy: {
-      period: "Jun 2026",
+      period: "Sep 2025 – Jun 2026",
       problem:
         "Give bus riders in Addis Ababa a live position for their bus and an arrival time they can trust.",
       myRole:
-        "Team lead of five and backend engineer: task planning, code review, delivery, and the FastAPI backend and ETA model.",
+        "Team lead of five and backend developer: task planning, code review, delivery, and the FastAPI backend and ETA model.",
       results: [
         "ETA model at R² = 0.93, MAE ≈ 4.6 min, trained on 140,000+ GPS records",
         "Production model compressed by 99%, from 2.8 GB to 17 MB, with no meaningful accuracy loss",
@@ -186,7 +186,7 @@ export const projects: Project[] = [
       "Cloudinary document storage",
     ],
     caseStudy: {
-      period: "Feb 2026",
+      period: "Feb 2026 – Aug 2026",
       problem:
         "Let patients book and pay for appointments, and let providers get onboarded and verified, on one platform.",
       myRole:

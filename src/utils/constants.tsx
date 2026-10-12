@@ -42,6 +42,8 @@ export const CONTACT = {
   email: "suraitana@gmail.com",
   github: "https://github.com/surraaI",
   linkedin: "https://www.linkedin.com/in/surraa-i/",
+  /** Generated from cv/sura-itana-cv.html; see the comment at the top of that file. */
+  cv: "/Sura-Itana-CV.pdf",
 };
 
 export const STATS = [
@@ -66,7 +68,7 @@ export const EXPERIENCE = [
   {
     role: "Full-Stack Engineer & Backend Architect",
     company: "HealLink",
-    period: "Feb 2026",
+    period: "Feb 2026 – Aug 2026",
     location: "Addis Ababa, Ethiopia",
     points: [
       "Built asynchronous APIs for a healthcare platform covering provider onboarding and diagnostic workflows.",
@@ -75,9 +77,9 @@ export const EXPERIENCE = [
     ],
   },
   {
-    role: "Team Lead & Backend Engineer",
+    role: "Team Lead and Backend Developer",
     company: "MoveMate (graduation project)",
-    period: "Jun 2026",
+    period: "Sep 2025 – Jun 2026",
     location: "Addis Ababa University",
     points: [
       "Led a team of five building an AI-powered public transport tracking system for Addis Ababa: task planning, code review, and delivery.",

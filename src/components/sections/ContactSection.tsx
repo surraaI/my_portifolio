@@ -39,6 +39,11 @@ export default function ContactSection() {
               LinkedIn
             </a>
           </li>
+          <li>
+            <a href={CONTACT.cv} download className="link-underline text-lg text-foreground">
+              Download CV
+            </a>
+          </li>
         </ul>
       </Reveal>
     </section>

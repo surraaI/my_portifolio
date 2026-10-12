@@ -1,0 +1,224 @@
+<!doctype html>
+<!--
+  Source for public/Sura-Itana-CV.pdf. Edit this file, then regenerate the PDF with Chrome:
+
+  chrome --headless=new --no-pdf-header-footer --virtual-time-budget=8000 \
+    --print-to-pdf=public/Sura-Itana-CV.pdf cv/sura-itana-cv.html
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sura Itana - CV</title>
+<meta name="author" content="Sura Itana">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:opsz,wght@6..72,500&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 15mm 16mm; }
+
+  :root {
+    --ink: #0E1B23;
+    --teal: #233D4D;
+    --muted: #4A5B66;
+    --rule: #C9D0D6;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    font-family: "Geist", "Segoe UI", Arial, sans-serif;
+    font-size: 9.6pt;
+    line-height: 1.42;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  header { margin-bottom: 11pt; }
+
+  h1 {
+    margin: 0;
+    font-family: "Newsreader", Georgia, serif;
+    font-weight: 500;
+    font-size: 27pt;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline { margin: 3pt 0 0; font-size: 11pt; color: var(--teal); font-weight: 500; }
+
+  .contact { margin: 6pt 0 0; color: var(--muted); display: flex; flex-wrap: wrap; column-gap: 14pt; row-gap: 1pt; }
+  .contact a { color: var(--teal); }
+
+  h2 {
+    margin: 12pt 0 5pt;
+    padding-bottom: 3pt;
+    border-bottom: 0.75pt solid var(--rule);
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: var(--teal);
+    break-after: avoid;
+  }
+
+  p { margin: 0; }
+
+  .job { margin-top: 8pt; break-inside: avoid; }
+  .job:first-of-type { margin-top: 0; }
+
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12pt; }
+  .job-title { font-weight: 600; font-size: 10.2pt; }
+  .job-title .org { font-weight: 500; color: var(--teal); }
+  .job-meta { color: var(--muted); white-space: nowrap; }
+  .job-place { color: var(--muted); font-size: 9pt; }
+
+  ul { margin: 3pt 0 0; padding-left: 12pt; }
+  li { margin-top: 1.6pt; padding-left: 1pt; }
+  li::marker { color: var(--muted); }
+
+  .skills { display: grid; grid-template-columns: 104pt 1fr; row-gap: 2.4pt; }
+  .skills dt { font-weight: 600; }
+  .skills dd { margin: 0; }
+
+  .plain { list-style: none; padding-left: 0; margin-top: 0; }
+  .plain li { margin-top: 2.4pt; padding-left: 0; }
+  .plain li:first-child { margin-top: 0; }
+  b, strong { font-weight: 600; }
+
+  .edu { display: flex; justify-content: space-between; gap: 12pt; }
+  .small { color: var(--muted); font-size: 9pt; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sura Itana</h1>
+  <p class="tagline">Software Engineer and CTO</p>
+  <p class="contact">
+    <span>Addis Ababa, Ethiopia</span>
+    <span><a href="tel:+251965430082">+251 965 430 082</a></span>
+    <span><a href="mailto:suraitana@gmail.com">suraitana@gmail.com</a></span>
+    <span><a href="https://my-portifolio-six-blush.vercel.app/">my-portifolio-six-blush.vercel.app</a></span>
+    <span><a href="https://www.linkedin.com/in/surraa-i/">linkedin.com/in/surraa-i</a></span>
+    <span><a href="https://github.com/surraaI">github.com/surraaI</a></span>
+    <span><a href="https://leetcode.com/u/sura_itana/">leetcode.com/u/sura_itana</a></span>
+  </p>
+</header>
+
+<section>
+  <h2>Summary</h2>
+  <p>
+    Software engineer who designs, builds, and ships complete products. My depth is backend: REST APIs in
+    Python (FastAPI) and Node.js on PostgreSQL and PostGIS. I also build the rest of the product, with
+    TypeScript, React, and Next.js on the web and Flutter on mobile. As CTO of Yeneb I am building a
+    multi-vertical delivery platform from scratch as its sole engineer, from requirements through
+    deployment. I have led a five-person team on an ML-driven transport project. BSc in Software
+    Engineering, A2SV graduate, 900+ algorithm problems solved.
+  </p>
+</section>
+
+<section>
+  <h2>Technical skills</h2>
+  <dl class="skills">
+    <dt>Backend</dt>
+    <dd>FastAPI, Node.js, Express, NestJS, REST API design, WebSockets (Socket.IO), Celery background jobs, JWT/OTP authentication, RBAC, payment and media integrations (Chapa, Cloudinary)</dd>
+    <dt>Databases</dt>
+    <dd>PostgreSQL, PostGIS, Redis, MySQL, MongoDB, SQLAlchemy 2.0</dd>
+    <dt>Languages</dt>
+    <dd>Python, TypeScript, JavaScript, Dart, SQL</dd>
+    <dt>Frontend</dt>
+    <dd>React, Next.js, Flutter, BLoC, responsive UI, REST and WebSocket clients</dd>
+    <dt>Tools and practices</dt>
+    <dd>Git and GitHub workflows, GitHub Actions CI, Docker, Sentry error monitoring, TDD, Clean Architecture, API security, deployment</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>Experience</h2>
+
+  <div class="job">
+    <div class="job-head">
+      <p class="job-title">Chief Technology Officer <span class="org">· Yeneb</span></p>
+      <p class="job-meta">May 2026 – Present</p>
+    </div>
+    <p class="job-place">Addis Ababa, Ethiopia</p>
+    <ul>
+      <li>Proposed building Yeneb's delivery super-app from scratch to company leadership, and lead it end to end as sole engineer: architecture, backend, database, web, mobile, infrastructure, and technical product decisions.</li>
+      <li>Designed and built a FastAPI backend with 200+ endpoints on PostgreSQL, PostGIS, Redis, and WebSockets, covering real-time order and courier tracking and geospatial courier matching.</li>
+      <li>Integrated online payments alongside cash on delivery, with a courier wallet that settles cash orders.</li>
+      <li>Built three Flutter apps (customer, courier, supplier) with multi-language support, plus a Next.js web platform for ordering, supplier management, and administration.</li>
+      <li>Set up CI/CD and deployment with Docker and GitHub Actions; own database design, requirements analysis, and technical documentation. The platform is preparing for launch.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <p class="job-title">Full-Stack Engineer and Backend Architect <span class="org">· HealLink</span></p>
+      <p class="job-meta">Feb 2026 – Aug 2026</p>
+    </div>
+    <p class="job-place">Addis Ababa, Ethiopia · <a href="https://heallink.onrender.com/">heallink.onrender.com</a></p>
+    <ul>
+      <li>Built asynchronous APIs for a healthcare platform covering provider onboarding and diagnostic workflows.</li>
+      <li>Integrated the Chapa payment gateway, and Cloudinary for secure medical document storage.</li>
+      <li>Implemented QR-based patient check-in with automated notifications, and a two-tier government verification dashboard.</li>
+      <li>Built provider analytics on appointment trends, peak occupancy, and no-show rates.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <p class="job-title">Team Lead and Backend Developer <span class="org">· MoveMate (graduation project)</span></p>
+      <p class="job-meta">Sep 2025 – Jun 2026</p>
+    </div>
+    <p class="job-place">Addis Ababa University</p>
+    <ul>
+      <li>Led a team of five building an AI-powered public transport tracking system for Addis Ababa: task planning, code review, and delivery.</li>
+      <li>Trained a RandomForestRegressor on 140,000+ GPS records for ETA prediction (R² = 0.93, MAE ≈ 4.6 min).</li>
+      <li>Designed a demand-based rerouting module and a nightly APScheduler retraining pipeline.</li>
+      <li>Compressed the production model by 99% (2.8 GB to 17 MB) with no meaningful accuracy loss.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <div class="job-head">
+      <p class="job-title">Full-Stack Developer <span class="org">· Mo-Creatives (freelance)</span></p>
+      <p class="job-meta">2023</p>
+    </div>
+    <ul>
+      <li>Delivered a company website with a custom CMS and a Next.js frontend for a client.</li>
+      <li>Implemented secure admin workflows and role-based content management.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Projects</h2>
+  <ul class="plain">
+    <li><b>SVM Booster.</b> Full-stack YouTube growth platform (React, Node.js/Express, MongoDB) with three-tier RBAC, real-time support chat over Socket.IO, and OCR-based subscription verification.</li>
+    <li><b>Saddeeqa.</b> Flutter implementation of the Ethiopian board game, with a Minimax and Alpha-Beta AI opponent at multiple difficulty levels.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu">
+    <p><b>BSc, Software Engineering</b>, Addis Ababa University</p>
+    <p class="job-meta">Jun 2026</p>
+  </div>
+  <p class="small">Coursework: Data Structures and Algorithms, Web and Mobile Development, AI, Machine Learning</p>
+</section>
+
+<section>
+  <h2>Achievements and leadership</h2>
+  <ul class="plain">
+    <li><b>A2SV graduate.</b> Africa to Silicon Valley, a Google-backed program for top African software engineers.</li>
+    <li><b>Algorithmic problem solving.</b> 900+ problems solved on LeetCode and Codeforces.</li>
+    <li><b>Vice President, FOCUS Finfinne.</b> Led cross-functional teams and student community initiatives.</li>
+    <li><b>Volunteer tutor.</b> Taught Math and English at Dembi Dollo Full Gospel Church.</li>
+  </ul>
+</section>
+
+</body>
+</html>
