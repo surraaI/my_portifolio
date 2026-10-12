@@ -52,6 +52,8 @@
 
   .contact { margin: 6pt 0 0; color: var(--muted); display: flex; flex-wrap: wrap; column-gap: 14pt; row-gap: 1pt; }
   .contact a { color: var(--teal); }
+  /* Word links: underlined so they read as clickable in a PDF viewer */
+  a.link { color: var(--teal); text-decoration: underline; text-underline-offset: 2pt; text-decoration-thickness: 0.6pt; }
 
   h2 {
     margin: 12pt 0 5pt;
@@ -100,10 +102,10 @@
     <span>Addis Ababa, Ethiopia</span>
     <span><a href="tel:+251965430082">+251 965 430 082</a></span>
     <span><a href="mailto:suraitana@gmail.com">suraitana@gmail.com</a></span>
-    <span><a href="https://my-portifolio-six-blush.vercel.app/">my-portifolio-six-blush.vercel.app</a></span>
-    <span><a href="https://www.linkedin.com/in/surraa-i/">linkedin.com/in/surraa-i</a></span>
-    <span><a href="https://github.com/surraaI">github.com/surraaI</a></span>
-    <span><a href="https://leetcode.com/u/sura_itana/">leetcode.com/u/sura_itana</a></span>
+    <span><a class="link" href="https://my-portifolio-six-blush.vercel.app/">Portfolio</a></span>
+    <span><a class="link" href="https://www.linkedin.com/in/surraa-i/">LinkedIn</a></span>
+    <span><a class="link" href="https://github.com/surraaI">GitHub</a></span>
+    <span><a class="link" href="https://leetcode.com/u/sura_itana/">LeetCode</a></span>
   </p>
 </header>
 
@@ -158,7 +160,7 @@
       <p class="job-title">Full-Stack Engineer and Backend Architect <span class="org">· HealLink</span></p>
       <p class="job-meta">Feb 2026 – Aug 2026</p>
     </div>
-    <p class="job-place">Addis Ababa, Ethiopia · <a href="https://heallink.onrender.com/">heallink.onrender.com</a></p>
+    <p class="job-place">Addis Ababa, Ethiopia · <a class="link" href="https://heallink.onrender.com/">Live site</a></p>
     <ul>
       <li>Built asynchronous APIs for a healthcare platform covering provider onboarding and diagnostic workflows.</li>
       <li>Integrated the Chapa payment gateway, and Cloudinary for secure medical document storage.</li>
