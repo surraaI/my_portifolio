@@ -46,14 +46,14 @@ export const projects: Project[] = [
     id: "yeneb-cods",
     title: "Yeneb",
     description: "Multi-vertical delivery super-app, built from scratch as its sole engineer",
-    longDescription: "Yeneb's delivery super-app platform, designed and built from scratch as CTO and sole engineer. A FastAPI backend with 200+ endpoints on PostgreSQL, PostGIS, Redis, and WebSockets covers real-time order and courier tracking, geospatial courier matching, integrated online payments, and a courier wallet that settles cash-on-delivery orders. Three Flutter apps (customer, courier, supplier) and a Next.js web platform sit on top, with CI/CD on Docker and GitHub Actions. The platform is preparing for launch.",
+    longDescription: "As CTO and sole engineer at Yeneb, I designed and built a delivery platform with 250+ FastAPI endpoints, real-time courier tracking, geospatial matching (PostGIS), AI-powered demand recommendations for couriers, online payments, three Flutter apps, and a Next.js web app and operations console. It runs on PostgreSQL, PostGIS, Redis, and WebSockets, with a courier wallet that settles cash-on-delivery orders and CI/CD on Docker and GitHub Actions.",
     category: "fullstack",
     technologies: ["FastAPI", "PostgreSQL", "PostGIS", "Redis", "Flutter", "Next.js", "Docker"],
     imageUrl: "/images/projects/yeneb.png",
     featured: true,
     role: "CTO",
     metrics: [
-      "200+ API endpoints",
+      "250+ API endpoints",
       "3 Flutter apps + Next.js web",
       "Real-time courier tracking",
     ],
@@ -63,7 +63,8 @@ export const projects: Project[] = [
       "Integrated online payments, with cash on delivery as an option",
       "Courier wallet that settles cash-on-delivery orders",
       "Customer, courier, and supplier Flutter apps with multi-language support",
-      "Next.js web platform for ordering, supplier management, and administration",
+      "AI-powered demand recommendations for couriers",
+      "Next.js web app for ordering and supplier management, plus an operations console",
       "CI/CD with Docker and GitHub Actions",
     ],
     caseStudy: {
@@ -73,8 +74,8 @@ export const projects: Project[] = [
       myRole:
         "CTO and sole engineer. I proposed building the platform from scratch to company leadership and own architecture, backend, database, web, mobile, infrastructure, and technical product decisions.",
       results: [
-        "200+ API endpoints on one FastAPI backend",
-        "Three Flutter apps and a Next.js web platform, built solo",
+        "250+ API endpoints on one FastAPI backend",
+        "Three Flutter apps, a Next.js web app, and an operations console, built solo",
         "CI/CD on Docker and GitHub Actions; the platform is preparing for launch",
       ],
       architecture: [
@@ -84,13 +85,15 @@ export const projects: Project[] = [
             { label: "Customer app", note: "Flutter" },
             { label: "Courier app", note: "Flutter" },
             { label: "Supplier app", note: "Flutter" },
-            { label: "Web platform", note: "Next.js" },
+            { label: "Web app", note: "Next.js" },
+            { label: "Operations console", note: "Next.js" },
           ],
         },
         {
           name: "API",
           nodes: [
-            { label: "FastAPI", note: "REST, 200+ endpoints" },
+            { label: "FastAPI", note: "REST, 250+ endpoints" },
+            { label: "Demand recommendations", note: "AI-powered, for couriers" },
             { label: "WebSockets", note: "Order and courier tracking" },
             { label: "Payments", note: "Online and cash on delivery" },
             { label: "Courier wallet", note: "Settles cash orders" },

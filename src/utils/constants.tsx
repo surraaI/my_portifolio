@@ -48,7 +48,7 @@ export const CONTACT = {
 
 export const STATS = [
   { value: "900+", label: "LeetCode and Codeforces problems solved" },
-  { value: "200+", label: "API endpoints built for Yeneb's platform" },
+  { value: "250+", label: "API endpoints built for Yeneb's platform" },
   { value: "0.93", label: "R² on MoveMate's bus ETA model" },
 ];
 
@@ -60,8 +60,8 @@ export const EXPERIENCE = [
     location: "Addis Ababa, Ethiopia",
     points: [
       "Sole engineer building Yeneb's super-app platform from scratch, after proposing the build to company leadership.",
-      "Designed and built a FastAPI backend with 200+ endpoints on PostgreSQL, PostGIS, Redis, and WebSockets: real-time order and courier tracking, geospatial courier matching, integrated online payments, and a courier wallet that settles cash-on-delivery orders.",
-      "Built three Flutter apps (customer, courier, supplier) with multi-language support, plus a Next.js web platform for ordering, supplier management, and administration.",
+      "Designed and built a FastAPI backend with 250+ endpoints on PostgreSQL, PostGIS, Redis, and WebSockets: real-time order and courier tracking, geospatial courier matching, integrated online payments, and a courier wallet that settles cash-on-delivery orders.",
+      "Built three Flutter apps (customer, courier, supplier) with multi-language support, plus a Next.js web app and operations console.",
       "Set up CI/CD and deployment with Docker and GitHub Actions. The platform is preparing for launch.",
     ],
   },
